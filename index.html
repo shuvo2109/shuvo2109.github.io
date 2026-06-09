@@ -361,7 +361,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
     <div class="wrap">
       <div class="kicker reveal">What I'm working toward</div>
       <h2 class="reveal" style="--d:.06s;margin-top:8px">Theory as infrastructure</h2>
-      <p class="lead narrow reveal" style="--d:.12s;margin-top:18px">The world has no shortage of data scientists. What's scarce — and increasingly urgent — are people who can build the theoretical scaffolding that tells us what the data should even mean. My aim is to help turn the mathematics of strategic, multi-agent behavior into dependable infrastructure for the decisions that shape public health, the trajectory of AI, and the security of the systems we all rely on.</p>
+      <p class="lead narrow reveal" style="--d:.12s;margin-top:18px">The world has no shortage of data scientists. What's scarce, and increasingly urgent, are people who can build the theoretical scaffolding that tells us what the data should even mean. Health, AI, and security are where I've gone deepest, but they aren't the edge of the work. The same mathematics of incentives has been picked up by researchers in carbon-trading markets, control theory, antibiotic resistance, complex networks, and human–machine systems in defense. What I'm best at is the part underneath all of them: the mathematical reasoning, the look behind the curtain, and the read on what a system is actually trying to maximize. That's a generalization, so I'm open to collaboration well beyond the three fields I'm known for.</p>
       <div class="reveal" style="--d:.18s;margin-top:26px">
         <a class="btn" data-nav="about">More about me <span class="ar">→</span></a>
       </div>
@@ -375,10 +375,10 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
     <div class="wrap narrow">
       <div class="kicker reveal">About</div>
       <h1 class="reveal" style="--d:.06s;font-size:clamp(2rem,4.6vw,3rem);margin:14px 0 28px">One question, followed across disciplines.</h1>
-      <p class="reveal" style="--d:.12s">I didn't take the obvious route. I trained as a civil engineer, fell for the mathematics underneath it, completed a Master of Philosophy in mathematics, and am now finishing a Master of Science in electrical and computer engineering. From the outside that looks like three careers. From the inside it's one: I kept following a single question across whatever discipline could answer it next.</p>
-      <p class="reveal" style="--d:.16s">That question is how agents — cells, people, algorithms — interacting under incentives produce emergent order or collapse into chaos. Rock-paper-scissors dynamics, vaccine hesitancy, traffic crashes, cooperation between AI agents: different costumes, same plot. I love mathematics as a language for this, not just as a tool; the four journal papers I published during my MPhil were the fun part, not the grind.</p>
-      <p class="reveal" style="--d:.2s">What I seem to be good at is translating messy, real-world phenomena into precise mathematical structures and then actually solving them — and moving between fields quickly enough to do it where it matters. And it matters more each year. The world has plenty of data scientists; what's scarce are people who can build the theoretical scaffolding that tells us what the data should even mean, in public health, in AI safety, and in security.</p>
-      <p class="reveal" style="--d:.24s">My aim is to keep building that scaffolding — to help turn the mathematics of strategic, multi-agent behavior into dependable infrastructure for high-stakes decisions. Right now that means deepening my work on cooperation in multi-agent learning systems, and finding the people and problems worth pointing it at next.</p>
+      <p class="reveal" style="--d:.12s">I didn't take the obvious route. I trained as a civil engineer, fell for the mathematics underneath it, finished a Master of Philosophy in mathematics, and am now completing a Master of Science in electrical and computer engineering. From the outside, that's three careers. From the inside, it's one: I kept following a single question into whatever discipline could answer it next.</p>
+      <p class="reveal" style="--d:.16s">The question crystallized on the day I won in the world of outcomes but lost in the world of meaning. My first real win was a road-safety design prize backed by the World Bank and the UN,  and then I watched the idea go nowhere, adopted by no agency, no government. It wasn't wrong. It just lacked the one thing that makes anything happen in the real world: an incentive for someone to act. That stung, and then it became a method. I started asking, of every system, what is actually being rewarded here?</p>
+      <p class="reveal" style="--d:.2s">The answer kept reducing to the same four levers, whether the agents were cells, animals, people in a resource dilemma, or robots in a grid world: how large the reward is, how likely success feels, how long until the payoff arrives, and how costly the effort is. Tune those four, and you can explain why cooperation survives or collapses, why people refuse a beneficial vaccine, why a learning agent trusts or betrays another. I love mathematics as the language that makes those levers precise. The journal papers I published during my MPhil were the fun part, not the grind.</p>
+      <p class="reveal" style="--d:.24s">What I'm good at is reading a system for what it's trying to maximize, turning that into mathematics I can actually solve, and moving between fields fast enough to do it where it counts. Public health, AI agents, and security are where I've delved deepest. Still, the method doesn't stop there; it's been adopted by people working on carbon markets, control theory, antibiotic resistance, and human–machine systems. I aim to keep building that scaffolding and to keep pointing it at the problems and people worth the effort.</p>
       <div class="reveal" style="--d:.3s;margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
         <a class="btn primary" data-nav="research">See my research <span class="ar">→</span></a>
         <a class="btn" data-nav="contact">Get in touch <span class="ar">→</span></a>
@@ -396,39 +396,39 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
       <p class="lead narrow reveal" style="--d:.12s">My work sits at the intersection of evolutionary game theory, eco-evolutionary dynamics, and the mathematical modeling of behavior. The common question is how individual choices, made under incentives and uncertainty, add up to collective order or collapse. Rather than list papers, I've organized the work around the questions that drive it.</p>
 
       <div style="margin-top:40px">
-        <div class="theme" id="theme-cooperation">
+        <div class="theme" id="theme-egt">
           <div class="tag t-h">Theme 01 — cooperation &amp; evolutionary dynamics</div>
           <h3>Cooperation, cyclic dominance &amp; evolutionary dynamics</h3>
-          <p class="hook">When does cooperation survive in a world that rewards defection — and what keeps rock-paper-scissors cycles spinning instead of settling?</p>
-          <p>Cooperation is fragile: in most strategic settings the rational move is to defect, yet cooperation persists across biology and society. My MPhil work asked when and why. Building on the <em>optional</em> prisoner's dilemma — where players may also abstain — I introduced eco-evolutionary feedback, letting the payoff landscape itself shift with the population's behavior. The result is rich cyclic dominance: rock-paper-scissors-like rotations between cooperate, defect, and abstain that can sustain cooperation indefinitely rather than collapsing to a single equilibrium.</p>
+          <p class="hook">Cooperation is fragile, yet it survives. What keeps it alive when the environment itself is changing, and to escape the tragedy of the commons, do you protect the cooperators or the resource?</p>
+          <p>This is the core of my MPhil work. Starting from the optional prisoner's dilemma, where players can also abstain, I added eco-evolutionary feedback, letting the payoff landscape shift with the state of a shared environment as it depletes and replenishes. The result is rich cyclic dominance: rock-paper-scissors-style rotations among cooperation, defection, and abstention that can sustain cooperation indefinitely instead of collapsing to a single outcome. Two lessons stand out. First, environmental feedback can flip the usual logic so defection is no longer the winning move. Second, saving cooperators and saving the environment turn out to be two distinct missions; rewards flow in both directions between a social dilemma and the ecology around it, and treating them as one problem obscures what's really going on.</p>
           <div class="out">
             <div class="ol">Outputs</div>
             <div class="outitem"><span class="yr">2024</span><span>Royal Society Open Science — environmental feedback &amp; the optional prisoner's dilemma. <a class="tlink" href="https://doi.org/10.1098/rsos.240717" target="_blank" rel="noopener">DOI ↗</a></span></div>
             <div class="outitem"><span class="yr">2024</span><span>Applied Mathematics and Computation — cyclic dominance of RPS strategies. <a class="tlink" href="https://doi.org/10.1016/j.amc.2024.128836" target="_blank" rel="noopener">DOI ↗</a></span></div>
             <div class="outitem"><span class="yr">2024</span><span>MPhil thesis (BUET) — eco-evolutionary dynamics of cyclic dominance in pairwise dilemma games.</span></div>
           </div>
-          <p class="next"><b>Heading toward →</b> &nbsp;extending these dynamics to agents that learn rather than agents with fixed strategies.</p>
+          <p class="next"><b>Heading toward →</b> &nbsp;extending these dynamics to strategy analysis across disciplines with relevant applications.</p>
         </div>
 
         <div class="theme" id="theme-epi">
           <div class="tag t-h">Theme 02 — public health</div>
           <h3>Behavioral epidemiology &amp; public-health decision-making</h3>
-          <p class="hook">Epidemics aren't only biological — they're behavioral. How do testing, treatment, and vaccination choices reshape an outbreak?</p>
-          <p>Whether people test, isolate, accept treatment, or vaccinate depends on perceived risk, cost, and what their neighbors do. Using game-theoretic models grounded in individual-based risk assessment and replicator dynamics, I've studied how combinations of testing, treatment, and vaccination interact — and which combinations actually drive an outbreak toward control. Alongside the modeling, I worked on field-facing projects on COVID-19 contact-reduction behavior and HPV vaccine hesitancy in Bangladesh.</p>
+          <p class="hook">Tracking how a disease spreads is only half the story. Why do people refuse a beneficial vaccine, and in regulating an outbreak, what wins: lower cost or higher efficiency?</p>
+          <p>Whether someone tests, isolates, accepts treatment, or vaccinates is a strategic decision, weighed against perceived risk, cost, and what their neighbors are doing. I build evolutionary game models on top of epidemic dynamics, an expanded SEIR system in which testing, treatment, and vaccination are choices rather than fixed rates, to identify which combinations actually push an outbreak toward control, and at what price. The recurring finding is that interventions don't simply add up: their value depends on cost, vaccine efficacy, public awareness, and the speed at which the disease spreads. Alongside the theory, I've worked on field-facing projects on COVID-19 contact-reduction behavior and HPV vaccine hesitancy in Bangladesh.</p>
           <div class="out">
             <div class="ol">Outputs</div>
             <div class="outitem"><span class="yr">2025</span><span>Scientific Reports — disease control via a testing game with treatment &amp; vaccination. <a class="tlink" href="https://doi.org/10.1038/s41598-024-84746-w" target="_blank" rel="noopener">DOI ↗</a></span></div>
             <div class="outitem"><span class="yr">2024</span><span>Evergreen — combined vaccination, testing &amp; treatment on epidemic dynamics. <a class="tlink" href="https://doi.org/10.5109/7236807" target="_blank" rel="noopener">DOI ↗</a></span></div>
             <div class="outitem"><span class="yr">2023–24</span><span>Research projects on COVID-19 behavior (RISE, BUET) and HPV hesitancy (UGC, Bangladesh).</span></div>
           </div>
-          <p class="next"><b>Heading toward →</b> &nbsp;decision-support models policymakers can actually use.</p>
+          <p class="next"><b>Heading toward →</b> &nbsp;decision-support models a policymaker could actually act on.</p>
         </div>
 
-        <div class="theme" id="theme-egt">
+        <div class="theme" id="theme-ece">
           <div class="tag t-a">Theme 03 — AI &amp; security · active frontier</div>
           <h3>Multi-agent reinforcement learning &amp; security</h3>
-          <p class="hook">What happens to cooperation and defection when the agents are learning algorithms instead of people?</p>
-          <p>This is where I'm heading now. At the University of Florida I've been extending the same questions — when does cooperation emerge, when does it break — to agents that learn. In multi-agent reinforcement learning, strategies aren't fixed; they're discovered through experience, which makes the game-theoretic dynamics both richer and harder to predict. I'm interested in how such systems can be steered toward cooperation and robustness, with cybersecurity as a proving ground where incentives, deception, and defense meet.</p>
+          <p class="hook">What happens to cooperation and defection when the agents are learning algorithms? Do you terminate one to head off betrayal, or keep cooperating and bet on a larger payoff?</p>
+          <p>At the University of Florida, I've been carrying the same questions into multi-agent reinforcement learning, where strategies aren't fixed but discovered through experience, which makes the dynamics both richer and harder to predict. The hard case is incomplete information: an agent has to infer whether its counterpart is genuinely cooperative or merely acting cooperative to set up a defection later. Cybersecurity is the natural proving ground because that's exactly where incentives, deception, and defense collide, and where a misread of another agent's intentions is expensive.</p>
           <div class="out">
             <div class="ol">Outputs</div>
             <div class="outitem"><span class="yr">2024–25</span><span>Graduate research, ECE, University of Florida — game theory in cybersecurity &amp; cooperation in multi-agent RL <span class="muted">(manuscript in preparation)</span>.</span></div>
@@ -477,7 +477,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="body">
             <p class="cite">A. Chakraborty, <b>M. F. R. Shuvo</b>, F. F. Haque, and K. M. A. Kabir, "Analyzing disease control through testing game approach embedded with treatment and vaccination strategies," <i>Scientific Reports</i>, vol. 15(1), 3994, 2025.</p>
             <div class="pub-actions"><a class="tlink" href="https://doi.org/10.1038/s41598-024-84746-w" target="_blank" rel="noopener">DOI ↗</a></div>
-            <details class="pls"><summary>Plain-language summary</summary><p>People don't decide to test, treat, or vaccinate in isolation — they respond to risk and to what others do. We built a game-theoretic model combining all three choices and showed which combinations actually bring an epidemic under control.</p></details>
+            <details class="pls"><summary>Plain-language summary</summary><p>People don't decide to test, treat, or vaccinate in a vacuum; they weigh the cost, the risk, and what others are doing. We built an SEIR epidemic model where those choices are strategic moves, then asked which mix of proactive vaccination and after-the-fact treatment actually brings an outbreak under control, and how the answer shifts with cost, vaccine efficacy, and public awareness.</p></details>
           </div>
         </div>
         <div class="pub">
@@ -485,7 +485,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="body">
             <p class="cite"><b>M. F. R. Shuvo</b> and K. M. A. Kabir, "Investigating the impact of environmental feedback on the optional prisoner's dilemma for insights into cyclic dominance and evolution of cooperation," <i>Royal Society Open Science</i>, vol. 11(10), 240717, 2024.</p>
             <div class="pub-actions"><a class="tlink" href="https://doi.org/10.1098/rsos.240717" target="_blank" rel="noopener">DOI ↗</a></div>
-            <details class="pls"><summary>Plain-language summary</summary><p>When the environment pushes back on behavior, cooperation, defection, and abstention can rotate in a never-ending rock-paper-scissors cycle — and that cycling is exactly what keeps cooperation alive.</p></details>
+            <details class="pls"><summary>Plain-language summary</summary><p>We let the environment talk back. By adding a depleting-and-replenishing environmental state to the optional prisoner's dilemma, we found that cooperation, defection, and abstention can rotate in a never-ending rock-paper-scissors cycle, and that under the right feedback, defection ceases to be the rational move. The cycling itself is what keeps cooperation alive.</p></details>
           </div>
         </div>
         <div class="pub">
@@ -493,7 +493,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="body">
             <p class="cite"><b>M. F. R. Shuvo</b> and K. M. A. Kabir, "Exploring cyclic dominance in rock-paper-scissor strategies within the optional prisoner's dilemma: A quantitative analysis with environmental feedback," <i>Applied Mathematics and Computation</i>, vol. 477, 128836, 2024.</p>
             <div class="pub-actions"><a class="tlink" href="https://doi.org/10.1016/j.amc.2024.128836" target="_blank" rel="noopener">DOI ↗</a></div>
-            <details class="pls"><summary>Plain-language summary</summary><p>A quantitative deep-dive into when those rock-paper-scissors cycles form, how fast they spin, and what tips a population between cooperation and collapse.</p></details>
+            <details class="pls"><summary>Plain-language summary</summary><p>A quantitative deep-dive into those rock-paper-scissors cycles among cooperators, defectors, and loners: when they form, what makes them spin faster or slower, and which knobs decide the winner. The rate at which the environment recovers, the payoff for opting out, and the sheer strength of the dilemma all proved pivotal.</p></details>
           </div>
         </div>
         <div class="pub">
@@ -501,7 +501,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="body">
             <p class="cite"><b>M. F. R. Shuvo</b>, F. F. Haque, and K. M. A. Kabir, "Modeling the impact of combined effect of vaccination, testing, and treatment on epidemic dynamics," <i>Evergreen</i>, vol. 11(3), pp. 1498–1507, 2024.</p>
             <div class="pub-actions"><a class="tlink" href="https://doi.org/10.5109/7236807" target="_blank" rel="noopener">DOI ↗</a></div>
-            <details class="pls"><summary>Plain-language summary</summary><p>Vaccination, testing, and treatment each help on their own — but their combined effect isn't simply additive. We mapped how they reinforce (or undercut) one another over the course of an epidemic.</p></details>
+            <details class="pls"><summary>Plain-language summary</summary><p>Vaccination, testing, and treatment each help on their own, but their combined effect isn't simply the sum of their parts. Framing each as an individual decision, we mapped how they reinforce or undercut one another over the course of an outbreak and found that rigorous testing is often the decisive ingredient. At the same time, the best outcomes require low transmission paired with reasonably efficient, affordable vaccination.</p></details>
           </div>
         </div>
       </div>
