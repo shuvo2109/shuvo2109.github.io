@@ -3,66 +3,92 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fahimur Rahman — Portfolio (Prototype)</title>
+<title>Fahimur Rahman — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F4F0E6; --paper-2:#EDE7D8; --surface:#FFFEFB;
-  --ink:#1B1A15; --ink-soft:#3b392f; --muted:#6c6857; --faint:#9a9583;
-  --line:#E2DACA; --line-2:#D4CBB4;
-  --accent:#0E6E59; --accent-2:#0a5346;
-  --health:#0E6E59; --ai:#3B3A8C; --security:#B0532E;
+  /* ---- Winter palette ---- */
+  --paper:#FFFFFF;          /* base white            */
+  --paper-2:#EFEFEF;        /* soft grey band        */
+  --frost:#DAF1FE;          /* pale ice blue         */
+  --frost-2:#EAF7FF;        /* lighter ice tint      */
+  --surface:#FFFFFF;        /* cards                 */
+  --ink:#1C1C1C;            /* primary text          */
+  --ink-soft:#2c2c2c;       /* body text             */
+  --muted:#5b6470;          /* secondary text        */
+  --faint:#9aa6b2;          /* faint text / glyphs   */
+  --line:#E2E8EF;           /* hairlines             */
+  --line-2:#CFE0EE;         /* stronger hairlines    */
+  --accent:#0041A5;         /* deep winter blue      */
+  --accent-2:#002E78;       /* darker blue (hover)   */
+  --accent-soft:#3D6FC4;    /* lighter blue          */
+  /* domain accents kept distinct but cooled toward the winter range */
+  --health:#0067A5; --ai:#0041A5; --security:#3A4E8C;
   --radius:16px; --radius-sm:10px; --maxw:1100px;
-  --serif:'Fraunces',Georgia,'Times New Roman',serif;
-  --sans:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',monospace;
+
+  /* ---- Type system (per brief) ----
+     Title    : Lora SemiBold        24
+     Heading  : EB Garamond          20
+     Subhead  : EB Garamond          16
+     Body     : Times New Roman      12  (set to 16px base below for legibility on screen)
+     Small    : Roboto                8  (set to ~11px on screen for legibility)            */
+  --title:'Lora',Georgia,'Times New Roman',serif;
+  --head:'EB Garamond',Georgia,'Times New Roman',serif;
+  --body:'Times New Roman',Times,Georgia,serif;
+  --small:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;background:var(--paper);color:var(--ink-soft);
-  font-family:var(--sans);font-size:17px;line-height:1.7;
+  font-family:var(--body);font-size:18px;line-height:1.75;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1.08;letter-spacing:-0.015em;margin:0}
+
+/* Headings ---------------------------------------------------------------
+   Title face is Lora; Heading/Subheading face is EB Garamond.            */
+h1,h2{font-family:var(--title);color:var(--ink);font-weight:600;line-height:1.12;letter-spacing:-0.01em;margin:0}
+h3,h4{font-family:var(--head);color:var(--ink);font-weight:600;line-height:1.2;margin:0}
 a{color:var(--accent);text-decoration:none}
 p{margin:0 0 1.05rem}
-.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.lead{font-size:1.18rem;color:var(--ink-soft)}
+
+/* Eyebrow / kicker + small text use Roboto (the "small text" face) */
+.kicker{font-family:var(--small);font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.lead{font-family:var(--head);font-size:1.32rem;line-height:1.6;color:var(--ink-soft)}
 .muted{color:var(--muted)}
 
-/* header */
-header.site{position:sticky;top:0;z-index:50;background:rgba(244,240,230,.82);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+/* header ---------------------------------------------------------------- */
+header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
 .brand{display:flex;align-items:center;gap:11px;cursor:pointer}
-.mono-mark{width:34px;height:34px;border:1.5px solid var(--ink);border-radius:8px;display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink)}
-.brand b{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--ink);letter-spacing:-.01em}
-.links{display:flex;align-items:center;gap:26px}
-.links a{font-size:.93rem;color:var(--ink-soft);letter-spacing:.01em;position:relative;padding:4px 0}
-.links a:hover{color:var(--ink)}
+.mono-mark{width:34px;height:34px;border:1.5px solid var(--accent);border-radius:8px;display:grid;place-items:center;font-family:var(--title);font-weight:600;font-size:14px;color:var(--accent);background:var(--frost)}
+.brand b{font-family:var(--title);font-weight:600;font-size:1.1rem;color:var(--ink);letter-spacing:-.01em}
+.links{display:flex;align-items:center;gap:24px}
+.links a{font-family:var(--small);font-size:.86rem;font-weight:500;letter-spacing:.02em;color:var(--ink-soft);position:relative;padding:4px 0}
+.links a:hover{color:var(--accent)}
 .links a[aria-current="page"]{color:var(--accent)}
 .links a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent)}
 .menu-btn{display:none;border:1px solid var(--line-2);background:var(--surface);border-radius:9px;width:42px;height:38px;cursor:pointer;align-items:center;justify-content:center}
 .menu-btn span,.menu-btn span::before,.menu-btn span::after{content:"";display:block;width:18px;height:2px;background:var(--ink);position:relative}
 .menu-btn span::before{position:absolute;top:-6px}.menu-btn span::after{position:absolute;top:6px}
 
-/* buttons */
-.btn{display:inline-flex;align-items:center;gap:.55em;font-family:var(--mono);font-size:.76rem;letter-spacing:.07em;text-transform:uppercase;padding:.92em 1.5em;border-radius:999px;border:1.5px solid var(--ink);cursor:pointer;transition:.24s ease;background:transparent;color:var(--ink)}
+/* buttons --------------------------------------------------------------- */
+.btn{display:inline-flex;align-items:center;gap:.55em;font-family:var(--small);font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.92em 1.5em;border-radius:999px;border:1.5px solid var(--accent);cursor:pointer;transition:.24s ease;background:transparent;color:var(--accent)}
 .btn .ar{transition:transform .24s ease}
 .btn:hover .ar{transform:translateX(4px)}
-.btn:hover{background:var(--ink);color:var(--paper)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fdfdf8}
+.btn:hover{background:var(--accent);color:#fff}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn.primary:hover{background:var(--accent-2);border-color:var(--accent-2)}
-.btn.sm{font-size:.7rem;padding:.7em 1.15em}
-.btn:focus-visible{outline:3px solid rgba(14,110,89,.4);outline-offset:2px}
-.tlink{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--accent);text-transform:uppercase;cursor:pointer}
+.btn.sm{font-size:.72rem;padding:.7em 1.15em}
+.btn:focus-visible{outline:3px solid rgba(0,65,165,.4);outline-offset:2px}
+.tlink{display:inline-flex;align-items:center;gap:.4em;font-family:var(--small);font-size:.78rem;font-weight:500;letter-spacing:.04em;color:var(--accent);text-transform:uppercase;cursor:pointer}
 .tlink .ar{transition:transform .2s}.tlink:hover .ar{transform:translateX(4px)}
 .tlink:hover{color:var(--accent-2)}
 
-/* page system + reveal */
+/* page system + reveal -------------------------------------------------- */
 main{min-height:60vh}
 .page{display:none}
 .page.is-active{display:block}
@@ -70,119 +96,142 @@ main{min-height:60vh}
 .page.is-active .reveal{opacity:0;animation:rise .72s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
 @media (prefers-reduced-motion:reduce){.page.is-active .reveal{animation:none;opacity:1}html{scroll-behavior:auto}}
 
-/* hero */
-.hero{padding:78px 0 64px;border-bottom:1px solid var(--line)}
+/* hero ------------------------------------------------------------------ */
+.hero{padding:78px 0 64px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--frost-2) 0%,var(--paper) 78%)}
 .hero-grid{display:grid;grid-template-columns:1.55fr .85fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(2.7rem,6vw,4.5rem);font-weight:500;margin:18px 0 22px;color:var(--ink)}
+.hero h1{font-size:clamp(2.4rem,5.2vw,3.9rem);font-weight:600;margin:18px 0 22px;color:var(--ink);line-height:1.1}
 .hero h1 .em{font-style:italic;color:var(--accent)}
-.hero .sub{font-size:1.22rem;color:var(--ink-soft);max-width:33ch;margin-bottom:30px}
+.hero .sub{font-family:var(--head);font-size:1.32rem;color:var(--ink-soft);max-width:34ch;margin-bottom:30px;line-height:1.55}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-.portrait{justify-self:center;text-align:center}
-.portrait .circle{width:236px;height:236px;border-radius:50%;background:var(--paper-2);border:1px solid var(--line-2);display:grid;place-items:center;position:relative;box-shadow:0 18px 50px rgba(27,26,21,.07)}
-.portrait .circle::after{content:"";position:absolute;inset:11px;border-radius:50%;border:1px dashed var(--line-2)}
-.portrait .circle b{font-family:var(--serif);font-size:5.5rem;color:var(--faint);font-weight:400}
-.portrait small{display:block;margin-top:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
 
-/* generic section */
+/* portrait — replace the glyph with your photo (see notes in chat) ------ */
+.portrait{justify-self:center;text-align:center}
+.portrait .circle{width:236px;height:236px;border-radius:50%;background:var(--frost);border:1px solid var(--line-2);display:grid;place-items:center;position:relative;box-shadow:0 18px 50px rgba(0,65,165,.10);overflow:hidden}
+.portrait .circle::after{content:"";position:absolute;inset:11px;border-radius:50%;border:1px dashed var(--line-2);pointer-events:none}
+.portrait .circle b{font-family:var(--title);font-size:5.5rem;color:var(--accent-soft);font-weight:500}
+.portrait .circle img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.portrait small{display:block;margin-top:14px;font-family:var(--small);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+
+/* generic section ------------------------------------------------------- */
 .section{padding:64px 0;border-bottom:1px solid var(--line)}
 .section.band{background:var(--paper-2)}
+.section.frost{background:var(--frost)}
 .sec-head{margin-bottom:34px}
-.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-top:8px}
-.narrow{max-width:62ch}
+.sec-head h2{font-size:clamp(1.6rem,3.2vw,2.3rem);margin-top:8px}
+.narrow{max-width:64ch}
 
-/* through-line chips */
+/* through-line chips ---------------------------------------------------- */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.chip{font-family:var(--mono);font-size:.74rem;letter-spacing:.03em;color:var(--ink-soft);background:var(--surface);border:1px solid var(--line-2);padding:7px 13px;border-radius:999px}
+.chip{font-family:var(--small);font-size:.74rem;font-weight:500;letter-spacing:.03em;color:var(--accent);background:var(--frost);border:1px solid var(--line-2);padding:7px 13px;border-radius:999px}
 
-/* domain cards */
+/* domain cards ---------------------------------------------------------- */
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:0 26px 26px;overflow:hidden;transition:.24s ease;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 16px 40px rgba(27,26,21,.07)}
+.card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 16px 40px rgba(0,65,165,.08)}
 .card .bar{height:4px;margin:0 -26px 22px}
-.card .idx{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--muted)}
-.card h3{font-size:1.4rem;margin:8px 0 12px}
+.card .idx{font-family:var(--small);font-size:.72rem;font-weight:500;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.card h3{font-size:1.5rem;margin:8px 0 12px}
 .card p{font-size:1rem;color:var(--ink-soft);flex:1}
 .bar-h{background:var(--health)} .bar-a{background:var(--ai)} .bar-s{background:var(--security)}
 .t-h{color:var(--health)} .t-a{color:var(--ai)} .t-s{color:var(--security)}
 
-/* publication rows */
+/* publication rows ------------------------------------------------------ */
 .pub{display:flex;gap:20px;padding:22px 0;border-top:1px solid var(--line);align-items:flex-start}
 .pub:last-of-type{border-bottom:1px solid var(--line)}
-.pub .venue{flex:0 0 168px;font-family:var(--mono);font-size:.74rem;letter-spacing:.02em;color:var(--muted);padding-top:4px}
-.pub .body h3{font-size:1.18rem;font-weight:500;line-height:1.3;margin-bottom:6px}
-.pub .body h3 .x{font-size:.85rem;color:var(--faint)}
+.pub .venue{flex:0 0 168px;font-family:var(--small);font-size:.76rem;font-weight:500;letter-spacing:.02em;color:var(--muted);padding-top:4px}
+.pub .body h3{font-size:1.28rem;font-weight:600;line-height:1.32;margin-bottom:6px}
+.pub .body h3 .x{font-size:.85rem;color:var(--accent-soft)}
 .pub-actions{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
-.cite{font-family:var(--sans);font-size:.95rem;color:var(--ink-soft)}
-.cite b{color:var(--ink);font-weight:600}
+.cite{font-family:var(--body);font-size:1.05rem;color:var(--ink-soft);line-height:1.6}
+.cite b{color:var(--ink);font-weight:700}
 details.pls{margin-top:12px;border-left:2px solid var(--line-2);padding:2px 0 2px 16px}
-details.pls summary{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);cursor:pointer;list-style:none}
+details.pls summary{font-family:var(--small);font-size:.74rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);cursor:pointer;list-style:none}
 details.pls summary::-webkit-details-marker{display:none}
 details.pls summary::before{content:"+ ";font-weight:600}
 details.pls[open] summary::before{content:"– "}
-details.pls p{margin:.6rem 0 .2rem;font-size:.97rem;color:var(--ink-soft)}
+details.pls p{margin:.6rem 0 .2rem;font-size:1.02rem;color:var(--ink-soft)}
 
-/* research themes */
+/* research themes ------------------------------------------------------- */
 .theme{padding:40px 0;border-top:1px solid var(--line)}
 .theme:first-of-type{border-top:none;padding-top:8px}
-.theme .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
-.theme h3{font-size:1.7rem;margin:10px 0 14px;max-width:24ch}
-.theme .hook{font-family:var(--serif);font-style:italic;font-size:1.28rem;color:var(--ink);margin-bottom:18px;max-width:40ch}
+.theme .tag{font-family:var(--small);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.theme h3{font-size:1.7rem;margin:10px 0 14px;max-width:26ch}
+.theme .hook{font-family:var(--head);font-style:italic;font-size:1.32rem;color:var(--ink);margin-bottom:18px;max-width:42ch;line-height:1.5}
 .theme .out{margin-top:18px}
-.theme .out .ol{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.theme .out .ol{font-family:var(--small);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .outitem{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-top:1px dashed var(--line-2)}
-.outitem .yr{font-family:var(--mono);font-size:.78rem;color:var(--muted);flex:0 0 88px}
-.next{margin-top:16px;font-size:1rem;color:var(--muted)}
-.next b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.outitem .yr{font-family:var(--small);font-size:.82rem;font-weight:500;color:var(--muted);flex:0 0 88px}
+.outitem span:last-child{font-size:1.02rem}
+.next{margin-top:16px;font-size:1.02rem;color:var(--muted)}
+.next b{font-family:var(--small);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 
-/* timeline / cv */
+/* timeline / cv --------------------------------------------------------- */
 .tl{position:relative;margin-left:6px}
 .tl-item{position:relative;padding:0 0 30px 30px;border-left:2px solid var(--line-2)}
 .tl-item:last-child{border-left-color:transparent}
 .tl-item::before{content:"";position:absolute;left:-7px;top:3px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--paper)}
-.tl-item .when{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
-.tl-item h3{font-size:1.22rem;font-weight:500;margin:4px 0 2px}
-.tl-item .org{color:var(--ink-soft);font-size:1rem}
-.tl-item .meta{font-size:.95rem;color:var(--muted);margin-top:4px}
-.tl-item .thesis{font-size:.95rem;color:var(--ink-soft);margin-top:6px;font-style:italic}
+.tl-item .when{font-family:var(--small);font-size:.78rem;font-weight:500;letter-spacing:.04em;color:var(--muted)}
+.tl-item h3{font-size:1.3rem;font-weight:600;margin:4px 0 2px}
+.tl-item .org{color:var(--ink-soft);font-size:1.05rem}
+.tl-item .meta{font-size:1rem;color:var(--muted);margin-top:4px}
+.tl-item .thesis{font-size:1rem;color:var(--ink-soft);margin-top:6px;font-style:italic}
 .skillgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.skillgroup h4{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;font-weight:500}
-.skillgroup p{font-size:1rem;color:var(--ink-soft);margin:0}
-.subhead{font-family:var(--serif);font-size:1.45rem;color:var(--ink);margin:42px 0 20px}
+.skillgroup h4{font-family:var(--small);font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.skillgroup p{font-size:1.02rem;color:var(--ink-soft);margin:0}
+.subhead{font-family:var(--title);font-weight:600;font-size:1.5rem;color:var(--ink);margin:42px 0 20px}
 
-/* beyond */
-.cards2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.bcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.24s ease}
-.bcard:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 16px 40px rgba(27,26,21,.07)}
-.bcard .thumb{height:120px;border-radius:var(--radius-sm);background:var(--paper-2);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--serif);font-size:2rem;color:var(--faint);margin-bottom:18px}
-.bcard h3{font-size:1.3rem;margin-bottom:8px}
-.bcard p{font-size:1rem;color:var(--ink-soft)}
+/* achievements ---------------------------------------------------------- */
+.ach{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+.acard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.24s ease;display:flex;flex-direction:column}
+.acard:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 16px 40px rgba(0,65,165,.08)}
+.acard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px}
+.acard .yr{font-family:var(--small);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding-top:3px}
+.acard h3{font-size:1.3rem;line-height:1.25}
+.acard .rank{display:inline-block;font-family:var(--small);font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--frost);border:1px solid var(--line-2);border-radius:999px;padding:4px 11px;margin:10px 0 12px;align-self:flex-start}
+.acard p{font-size:1rem;color:var(--ink-soft);flex:1;margin-bottom:14px}
+.acard .links{display:flex;gap:16px;flex-wrap:wrap}
 
-/* contact */
-.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:40px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
-.contact-card .em{font-family:var(--mono);font-size:1.05rem;color:var(--ink);word-break:break-all}
+/* beyond (Creative Works structure) ------------------------------------- */
+.cw-block{padding:40px 0;border-top:1px solid var(--line)}
+.cw-block:first-of-type{border-top:none;padding-top:8px}
+.cw-block > .cat{font-family:var(--small);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.cw-block > h2.cwh{font-family:var(--title);font-weight:600;font-size:1.7rem;color:var(--ink);margin:8px 0 12px}
+.cw-block > .intro{font-size:1.05rem;color:var(--ink-soft);max-width:68ch;margin-bottom:8px}
+.cw-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.work{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;transition:.24s ease;display:flex;flex-direction:column}
+.work:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 14px 36px rgba(0,65,165,.08)}
+.work .thumb{height:84px;border-radius:var(--radius-sm);background:var(--frost);border:1px solid var(--line-2);display:grid;place-items:center;font-family:var(--title);font-size:1.8rem;color:var(--accent-soft);margin-bottom:16px}
+.work h4{font-size:1.18rem;margin-bottom:8px;line-height:1.25}
+.work p{font-size:.98rem;color:var(--ink-soft);flex:1;margin-bottom:14px}
+.work .links{display:flex;gap:14px;flex-wrap:wrap}
+.cw-note{font-size:1rem;color:var(--muted);margin-top:18px}
+
+/* contact --------------------------------------------------------------- */
+.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:40px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;box-shadow:0 18px 50px rgba(0,65,165,.06)}
+.contact-card .em{font-family:var(--small);font-size:1.02rem;font-weight:500;color:var(--ink);word-break:break-all}
 .social{display:flex;gap:14px;flex-wrap:wrap}
-.social a{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;color:var(--ink);transition:.22s}
-.social a:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.social a{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;color:var(--accent);transition:.22s;background:var(--frost-2)}
+.social a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .social svg{width:20px;height:20px;fill:currentColor}
 
-/* external dummy */
+/* external dummy -------------------------------------------------------- */
 .dummy{padding:90px 0;display:grid;place-items:center;text-align:center}
-.dummy .box{max-width:560px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);padding:48px 40px;box-shadow:0 20px 60px rgba(27,26,21,.08)}
-.dummy .badge{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--security);border:1px solid var(--security);border-radius:999px;padding:6px 14px;margin-bottom:22px}
+.dummy .box{max-width:560px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);padding:48px 40px;box-shadow:0 20px 60px rgba(0,65,165,.10)}
+.dummy .badge{display:inline-block;font-family:var(--small);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line-2);background:var(--frost);border-radius:999px;padding:6px 14px;margin-bottom:22px}
 .dummy h2{font-size:2rem;margin-bottom:16px}
-.dummy .dest{font-family:var(--mono);font-size:.95rem;color:var(--ink);background:var(--paper-2);border:1px solid var(--line-2);border-radius:var(--radius-sm);padding:14px 18px;margin:22px 0;word-break:break-all}
+.dummy .dest{font-family:var(--small);font-size:.95rem;color:var(--ink);background:var(--paper-2);border:1px solid var(--line-2);border-radius:var(--radius-sm);padding:14px 18px;margin:22px 0;word-break:break-all}
 .dummy .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
 
-/* footer */
+/* footer ---------------------------------------------------------------- */
 footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid var(--line)}
 .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
-.foot .name{font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:4px}
-.foot .det{font-size:.92rem;color:var(--muted)}
+.foot .name{font-family:var(--title);font-weight:600;font-size:1.2rem;color:var(--ink);margin-bottom:4px}
+.foot .det{font-size:.95rem;color:var(--muted)}
 .foot-links{display:flex;gap:22px;flex-wrap:wrap}
-.foot-links a{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+.foot-links a{font-family:var(--small);font-size:.78rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
 .foot-links a:hover{color:var(--accent)}
 .foot .social a{width:40px;height:40px}
-.proto{margin-top:26px;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--faint)}
+.proto{margin-top:26px;font-family:var(--small);font-size:.72rem;letter-spacing:.08em;color:var(--faint)}
 
 @media (max-width:880px){
   .links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:14px 28px;gap:6px}
@@ -192,7 +241,8 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
   .hero-grid{grid-template-columns:1fr;gap:36px}
   .portrait{order:-1}
   .cards3{grid-template-columns:1fr}
-  .cards2{grid-template-columns:1fr}
+  .ach{grid-template-columns:1fr}
+  .cw-grid{grid-template-columns:1fr}
   .skillgrid{grid-template-columns:1fr}
   .contact-card{grid-template-columns:1fr;gap:28px;padding:30px}
   .pub{flex-direction:column;gap:6px}
@@ -214,6 +264,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
       <a href="#research" data-nav="research">Research</a>
       <a href="#publications" data-nav="publications">Publications</a>
       <a href="#cv" data-nav="cv">CV</a>
+      <a href="#achievements" data-nav="achievements">Achievements</a>
       <a href="#beyond" data-nav="beyond">Beyond</a>
       <a href="#contact" data-nav="contact">Contact</a>
     </nav>
@@ -232,10 +283,12 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
         <p class="sub reveal" style="--d:.16s">Game theory, evolutionary dynamics, and multi-agent systems — applied to public health, AI safety, and security.</p>
         <div class="hero-cta reveal" style="--d:.24s">
           <a class="btn primary" href="#research" data-nav="research">Explore my research <span class="ar">→</span></a>
-          <a class="btn" data-nav="cv" data-ext="CV (PDF) — Google Drive download">Download CV</a>
+          <!-- CV link: edit the href below (currently your archived Google Drive CV) -->
+          <a class="btn" href="https://drive.google.com/file/d/1Qg0W0gUv-yw9pisP768h1gEDFc5nYpzw/view?usp=sharing" target="_blank" rel="noopener">Download CV</a>
         </div>
       </div>
       <div class="portrait reveal" style="--d:.2s">
+        <!-- PHOTO: replace the <b>F</b> line below with <img src="your-photo.jpg" alt="Fahimur Rahman Shuvo"> -->
         <div class="circle"><b>F</b></div>
         <small>your photo</small>
       </div>
@@ -294,15 +347,15 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
       <div class="reveal" style="--d:.08s">
         <div class="pub">
           <div class="venue">Scientific Reports · 2025</div>
-          <div class="body"><h3>Analyzing disease control through a testing-game approach with treatment and vaccination strategies <a class="x" data-nav="publications" data-ext="DOI — doi.org/10.1038/s41598-024-84746-w">↗</a></h3></div>
+          <div class="body"><h3>Analyzing disease control through a testing-game approach with treatment and vaccination strategies <a class="x" href="https://doi.org/10.1038/s41598-024-84746-w" target="_blank" rel="noopener">↗</a></h3></div>
         </div>
         <div class="pub">
           <div class="venue">R. Soc. Open Science · 2024</div>
-          <div class="body"><h3>Environmental feedback in the optional prisoner's dilemma: cyclic dominance and the evolution of cooperation <a class="x" data-nav="publications" data-ext="DOI — doi.org/10.1098/rsos.240717">↗</a></h3></div>
+          <div class="body"><h3>Environmental feedback in the optional prisoner's dilemma: cyclic dominance and the evolution of cooperation <a class="x" href="https://doi.org/10.1098/rsos.240717" target="_blank" rel="noopener">↗</a></h3></div>
         </div>
         <div class="pub">
           <div class="venue">Appl. Math. Comput. · 2024</div>
-          <div class="body"><h3>Cyclic dominance of rock-paper-scissors strategies within the optional prisoner's dilemma <a class="x" data-nav="publications" data-ext="DOI — doi.org/10.1016/j.amc.2024.128836">↗</a></h3></div>
+          <div class="body"><h3>Cyclic dominance of rock-paper-scissors strategies within the optional prisoner's dilemma <a class="x" href="https://doi.org/10.1016/j.amc.2024.128836" target="_blank" rel="noopener">↗</a></h3></div>
         </div>
       </div>
     </div>
@@ -325,7 +378,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
   <section class="section">
     <div class="wrap narrow">
       <div class="kicker reveal">About</div>
-      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 28px">One question, followed across disciplines.</h1>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2rem,4.6vw,3rem);margin:14px 0 28px">One question, followed across disciplines.</h1>
       <p class="reveal" style="--d:.12s">I didn't take the obvious route. I trained as a civil engineer, fell for the mathematics underneath it, completed a Master of Philosophy in mathematics, and am now finishing a Master of Science in electrical and computer engineering. From the outside that looks like three careers. From the inside it's one: I kept following a single question across whatever discipline could answer it next.</p>
       <p class="reveal" style="--d:.16s">That question is how agents — cells, people, algorithms — interacting under incentives produce emergent order or collapse into chaos. Rock-paper-scissors dynamics, vaccine hesitancy, traffic crashes, cooperation between AI agents: different costumes, same plot. I love mathematics as a language for this, not just as a tool; the four journal papers I published during my MPhil were the fun part, not the grind.</p>
       <p class="reveal" style="--d:.2s">What I seem to be good at is translating messy, real-world phenomena into precise mathematical structures and then actually solving them — and moving between fields quickly enough to do it where it matters. And it matters more each year. The world has plenty of data scientists; what's scarce are people who can build the theoretical scaffolding that tells us what the data should even mean, in public health, in AI safety, and in security.</p>
@@ -343,7 +396,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
   <section class="section">
     <div class="wrap">
       <div class="kicker reveal">Research / 02</div>
-      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 22px">Research</h1>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2rem,4.6vw,3rem);margin:14px 0 22px">Research</h1>
       <p class="lead narrow reveal" style="--d:.12s">My work sits at the intersection of evolutionary game theory, eco-evolutionary dynamics, and the mathematical modeling of behavior. The common question is how individual choices, made under incentives and uncertainty, add up to collective order or collapse. Rather than list papers, I've organized the work around the questions that drive it.</p>
 
       <div style="margin-top:40px">
@@ -354,8 +407,8 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <p>Cooperation is fragile: in most strategic settings the rational move is to defect, yet cooperation persists across biology and society. My MPhil work asked when and why. Building on the <em>optional</em> prisoner's dilemma — where players may also abstain — I introduced eco-evolutionary feedback, letting the payoff landscape itself shift with the population's behavior. The result is rich cyclic dominance: rock-paper-scissors-like rotations between cooperate, defect, and abstain that can sustain cooperation indefinitely rather than collapsing to a single equilibrium.</p>
           <div class="out">
             <div class="ol">Outputs</div>
-            <div class="outitem"><span class="yr">2024</span><span>Royal Society Open Science — environmental feedback &amp; the optional prisoner's dilemma. <a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1098/rsos.240717">DOI ↗</a></span></div>
-            <div class="outitem"><span class="yr">2024</span><span>Applied Mathematics and Computation — cyclic dominance of RPS strategies. <a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1016/j.amc.2024.128836">DOI ↗</a></span></div>
+            <div class="outitem"><span class="yr">2024</span><span>Royal Society Open Science — environmental feedback &amp; the optional prisoner's dilemma. <a class="tlink" href="https://doi.org/10.1098/rsos.240717" target="_blank" rel="noopener">DOI ↗</a></span></div>
+            <div class="outitem"><span class="yr">2024</span><span>Applied Mathematics and Computation — cyclic dominance of RPS strategies. <a class="tlink" href="https://doi.org/10.1016/j.amc.2024.128836" target="_blank" rel="noopener">DOI ↗</a></span></div>
             <div class="outitem"><span class="yr">2024</span><span>MPhil thesis (BUET) — eco-evolutionary dynamics of cyclic dominance in pairwise dilemma games.</span></div>
           </div>
           <p class="next"><b>Heading toward →</b> &nbsp;extending these dynamics to agents that learn rather than agents with fixed strategies.</p>
@@ -368,8 +421,8 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <p>Whether people test, isolate, accept treatment, or vaccinate depends on perceived risk, cost, and what their neighbors do. Using game-theoretic models grounded in individual-based risk assessment and replicator dynamics, I've studied how combinations of testing, treatment, and vaccination interact — and which combinations actually drive an outbreak toward control. Alongside the modeling, I worked on field-facing projects on COVID-19 contact-reduction behavior and HPV vaccine hesitancy in Bangladesh.</p>
           <div class="out">
             <div class="ol">Outputs</div>
-            <div class="outitem"><span class="yr">2025</span><span>Scientific Reports — disease control via a testing game with treatment &amp; vaccination. <a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1038/s41598-024-84746-w">DOI ↗</a></span></div>
-            <div class="outitem"><span class="yr">2024</span><span>Evergreen — combined vaccination, testing &amp; treatment on epidemic dynamics. <a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.5109/7236807">DOI ↗</a></span></div>
+            <div class="outitem"><span class="yr">2025</span><span>Scientific Reports — disease control via a testing game with treatment &amp; vaccination. <a class="tlink" href="https://doi.org/10.1038/s41598-024-84746-w" target="_blank" rel="noopener">DOI ↗</a></span></div>
+            <div class="outitem"><span class="yr">2024</span><span>Evergreen — combined vaccination, testing &amp; treatment on epidemic dynamics. <a class="tlink" href="https://doi.org/10.5109/7236807" target="_blank" rel="noopener">DOI ↗</a></span></div>
             <div class="outitem"><span class="yr">2023–24</span><span>Research projects on COVID-19 behavior (RISE, BUET) and HPV hesitancy (UGC, Bangladesh).</span></div>
           </div>
           <p class="next"><b>Heading toward →</b> &nbsp;decision-support models policymakers can actually use.</p>
@@ -394,7 +447,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <p>The systems instinct started here. For my civil-engineering thesis I modeled road-traffic crashes in the Dhaka metropolitan area as a self-exciting (Hawkes) point process — treating each crash not as an independent event but as something that raises the short-term probability of further crashes nearby, the way aftershocks follow an earthquake. It was my first taste of finding hidden structure in messy real-world data, and the path from there to game theory has been a straight line in disguise.</p>
           <div class="out">
             <div class="ol">Outputs</div>
-            <div class="outitem"><span class="yr">2022</span><span>BSc thesis / engrXiv preprint — crashes as a self-exciting point process. <a class="tlink" data-nav="publications" data-ext="engrXiv preprint — engrxiv.org/preprint/view/2656">Preprint ↗</a></span></div>
+            <div class="outitem"><span class="yr">2022</span><span>BSc thesis / engrXiv preprint — crashes as a self-exciting point process. <a class="tlink" href="https://engrxiv.org/preprint/view/2656" target="_blank" rel="noopener">Preprint ↗</a></span></div>
           </div>
         </div>
       </div>
@@ -412,12 +465,13 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
   <section class="section">
     <div class="wrap">
       <div class="kicker reveal">Publications / 03</div>
-      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 16px">Publications</h1>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2rem,4.6vw,3rem);margin:14px 0 16px">Publications</h1>
       <p class="muted narrow reveal" style="--d:.1s">For the most current list, see my Google Scholar profile. Author name in <b style="color:var(--ink)">bold</b> is mine.</p>
       <div class="reveal" style="--d:.14s;display:flex;gap:14px;margin:22px 0 8px;flex-wrap:wrap">
-        <a class="btn sm" data-nav="publications" data-ext="Google Scholar — scholar.google.com/citations?user=t214uIMAAAAJ">Google Scholar</a>
-        <a class="btn sm" data-nav="publications" data-ext="ORCID — orcid.org (create an iD; see blueprint)">ORCID</a>
-        <a class="btn sm" data-nav="publications" data-ext="ResearchGate — researchgate.net/profile/Md-Fahimur-Rahman-Shuvo">ResearchGate</a>
+        <a class="btn sm" href="https://scholar.google.com/citations?hl=en&user=t214uIMAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <!-- ORCID: no iD found on the archived site — add your ORCID URL here when you have one -->
+        <a class="btn sm" data-nav="publications" data-ext="ORCID — add your ORCID iD URL">ORCID</a>
+        <a class="btn sm" href="https://www.researchgate.net/profile/Md-Fahimur-Rahman-Shuvo" target="_blank" rel="noopener">ResearchGate</a>
       </div>
 
       <h2 class="subhead reveal" style="--d:.16s">Journal articles</h2>
@@ -426,7 +480,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="venue">Scientific Reports<br>15(1), 3994 · 2025</div>
           <div class="body">
             <p class="cite">A. Chakraborty, <b>M. F. R. Shuvo</b>, F. F. Haque, and K. M. A. Kabir, "Analyzing disease control through testing game approach embedded with treatment and vaccination strategies," <i>Scientific Reports</i>, vol. 15(1), 3994, 2025.</p>
-            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1038/s41598-024-84746-w">DOI ↗</a></div>
+            <div class="pub-actions"><a class="tlink" href="https://doi.org/10.1038/s41598-024-84746-w" target="_blank" rel="noopener">DOI ↗</a></div>
             <details class="pls"><summary>Plain-language summary</summary><p>People don't decide to test, treat, or vaccinate in isolation — they respond to risk and to what others do. We built a game-theoretic model combining all three choices and showed which combinations actually bring an epidemic under control.</p></details>
           </div>
         </div>
@@ -434,7 +488,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="venue">Royal Society Open Science<br>11(10), 240717 · 2024</div>
           <div class="body">
             <p class="cite"><b>M. F. R. Shuvo</b> and K. M. A. Kabir, "Investigating the impact of environmental feedback on the optional prisoner's dilemma for insights into cyclic dominance and evolution of cooperation," <i>Royal Society Open Science</i>, vol. 11(10), 240717, 2024.</p>
-            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1098/rsos.240717">DOI ↗</a></div>
+            <div class="pub-actions"><a class="tlink" href="https://doi.org/10.1098/rsos.240717" target="_blank" rel="noopener">DOI ↗</a></div>
             <details class="pls"><summary>Plain-language summary</summary><p>When the environment pushes back on behavior, cooperation, defection, and abstention can rotate in a never-ending rock-paper-scissors cycle — and that cycling is exactly what keeps cooperation alive.</p></details>
           </div>
         </div>
@@ -442,7 +496,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="venue">Applied Mathematics<br>and Computation<br>477, 128836 · 2024</div>
           <div class="body">
             <p class="cite"><b>M. F. R. Shuvo</b> and K. M. A. Kabir, "Exploring cyclic dominance in rock-paper-scissor strategies within the optional prisoner's dilemma: A quantitative analysis with environmental feedback," <i>Applied Mathematics and Computation</i>, vol. 477, 128836, 2024.</p>
-            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1016/j.amc.2024.128836">DOI ↗</a></div>
+            <div class="pub-actions"><a class="tlink" href="https://doi.org/10.1016/j.amc.2024.128836" target="_blank" rel="noopener">DOI ↗</a></div>
             <details class="pls"><summary>Plain-language summary</summary><p>A quantitative deep-dive into when those rock-paper-scissors cycles form, how fast they spin, and what tips a population between cooperation and collapse.</p></details>
           </div>
         </div>
@@ -450,7 +504,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="venue">Evergreen<br>11(3), 1498–1507 · 2024</div>
           <div class="body">
             <p class="cite"><b>M. F. R. Shuvo</b>, F. F. Haque, and K. M. A. Kabir, "Modeling the impact of combined effect of vaccination, testing, and treatment on epidemic dynamics," <i>Evergreen</i>, vol. 11(3), pp. 1498–1507, 2024.</p>
-            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.5109/7236807">DOI ↗</a></div>
+            <div class="pub-actions"><a class="tlink" href="https://doi.org/10.5109/7236807" target="_blank" rel="noopener">DOI ↗</a></div>
             <details class="pls"><summary>Plain-language summary</summary><p>Vaccination, testing, and treatment each help on their own — but their combined effect isn't simply additive. We mapped how they reinforce (or undercut) one another over the course of an epidemic.</p></details>
           </div>
         </div>
@@ -462,7 +516,7 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
           <div class="venue">engrXiv preprint · 2022</div>
           <div class="body">
             <p class="cite"><b>M. F. R. Shuvo</b>, "Modelling crashes as self-exciting point process: A study in Dhaka Metropolitan Area," BSc thesis / engrXiv preprint, 2022.</p>
-            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="engrXiv — engrxiv.org/preprint/view/2656">Preprint ↗</a></div>
+            <div class="pub-actions"><a class="tlink" href="https://engrxiv.org/preprint/view/2656" target="_blank" rel="noopener">Preprint ↗</a></div>
           </div>
         </div>
       </div>
@@ -476,10 +530,11 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
     <div class="wrap">
       <div class="kicker reveal">CV &amp; experience / 04</div>
       <div class="reveal" style="--d:.06s;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin:14px 0 14px">
-        <h1 style="font-size:clamp(2.2rem,5vw,3.3rem)">CV &amp; experience</h1>
+        <h1 style="font-size:clamp(2rem,4.6vw,3rem)">CV &amp; experience</h1>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn primary" data-nav="cv" data-ext="CV (PDF) — Google Drive download link">Download CV (PDF) <span class="ar">↓</span></a>
-          <a class="btn" data-nav="cv" data-ext="Open in Google Drive — drive.google.com/...">Open in Drive</a>
+          <!-- CV download link (archived Google Drive CV) -->
+          <a class="btn primary" href="https://drive.google.com/file/d/1Qg0W0gUv-yw9pisP768h1gEDFc5nYpzw/view?usp=sharing" target="_blank" rel="noopener">Download CV (PDF) <span class="ar">↓</span></a>
+          <a class="btn" href="https://drive.google.com/file/d/1Qg0W0gUv-yw9pisP768h1gEDFc5nYpzw/view?usp=sharing" target="_blank" rel="noopener">Open in Drive</a>
         </div>
       </div>
       <p class="muted narrow reveal" style="--d:.1s">A full record of my education, research, teaching, and awards. Download the latest CV above.</p>
@@ -562,46 +617,244 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
         <div class="skillgroup"><h4>Computational methods &amp; simulation</h4><p>Agent-based modeling, multi-agent simulation, multi-agent reinforcement learning, Q-learning, formal methods for AI &amp; robotics.</p></div>
         <div class="skillgroup"><h4>Data science &amp; statistics</h4><p>Data visualization, statistical modeling, epidemiological data analysis, survey design &amp; analytics, applied machine learning.</p></div>
         <div class="skillgroup"><h4>Public health &amp; behavioral research</h4><p>Behavioral vaccination modeling, epidemic intervention modeling, public-health decision-making, individual-based risk assessment, health survey methodology.</p></div>
-        <div class="skillgroup"><h4>Programming &amp; tools</h4><p>Python, LaTeX, R, Microsoft Excel &amp; Office suite.</p></div>
+        <div class="skillgroup"><h4>Programming &amp; tools</h4><p>Python, LaTeX, R, C, Assembly, Microsoft Excel &amp; Office suite.</p></div>
         <div class="skillgroup"><h4>Languages</h4><p>Bengali (native), English (professional working proficiency).</p></div>
       </div>
     </div>
   </section>
 </section>
 
-<!-- ============ BEYOND ============ -->
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="page" id="achievements">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker reveal">Achievements / 05</div>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2rem,4.6vw,3rem);margin:14px 0 18px">Achievements</h1>
+      <p class="lead narrow reveal" style="--d:.1s">A selection of competitions and honors — from road-safety advocacy and engineering contests to mathematics olympiads — spanning school through university.</p>
+
+      <div class="ach" style="margin-top:34px">
+        <div class="acard reveal" style="--d:.05s">
+          <div class="top">
+            <h3>Road Safety Champion Video Competition</h3>
+            <span class="yr">Jan 2020</span>
+          </div>
+          <span class="rank">Champion</span>
+          <p>A call for video submissions under The World Bank and the United Nations invited young Bangladeshis aged 18–23 to propose innovative ideas to improve road safety in Dhaka. Our three-person team submitted a presentation, "Separate Bus Lanes," advocating dedicated bus lanes to improve traffic flow across the city.</p>
+          <div class="links">
+            <a class="tlink" href="https://www.worldbank.org/en/news/press-release/2020/01/28/better-road-safety-will-boost-economic-growth-in-bangladesh" target="_blank" rel="noopener">Press release ↗</a>
+            <a class="tlink" href="https://youtu.be/yf3pU2_8paM?si=dR1CfNOB6Vm6dpes" target="_blank" rel="noopener">YouTube video ↗</a>
+          </div>
+        </div>
+
+        <div class="acard reveal" style="--d:.1s">
+          <div class="top">
+            <h3>CAD Master — Eccentric: Civil Engineering Festival</h3>
+            <span class="yr">Jul 2018</span>
+          </div>
+          <span class="rank">2nd Runners-Up</span>
+          <p>Hosted by the Department of Civil Engineering at BUET, this competition required participants to meticulously reproduce engineering drawings using AutoCAD 2007 within a strict time limit.</p>
+        </div>
+
+        <div class="acard reveal" style="--d:.15s">
+          <div class="top">
+            <h3>AutoCAD 3D Model Competition</h3>
+            <span class="yr">Jan 2018</span>
+          </div>
+          <span class="rank">Champion</span>
+          <p>Part of the Department of Civil Engineering's Computer-Aided Drafting course, this competition challenged groups of students to create faithful replicas of residential building structural elements. Our 16-person team was recognised for the most precise rendition of a reinforced square-tied column footing.</p>
+        </div>
+
+        <div class="acard reveal" style="--d:.2s">
+          <div class="top">
+            <h3>Pi Day Mathematics Contest</h3>
+            <span class="yr">Mar 2017</span>
+          </div>
+          <span class="rank">Champion</span>
+          <p>Conducted by the Department of Mathematics at Dhaka University, this event took the format of a Mathematics Olympiad, where participants solved mathematical problems under strict time constraints.</p>
+        </div>
+
+        <div class="acard reveal" style="--d:.25s">
+          <div class="top">
+            <h3>General Scholarship — Higher Secondary Certificate</h3>
+            <span class="yr">2017</span>
+          </div>
+          <p>Awarded by the Bangladesh Education Board for exceptional results in Science, including a perfect score of 200/200 in Higher Mathematics and consistently exceeding 80% in all other subjects.</p>
+        </div>
+
+        <div class="acard reveal" style="--d:.3s">
+          <div class="top">
+            <h3>Bangladesh Mathematical Olympiad 2014 — National Round</h3>
+            <span class="yr">Dec 2013</span>
+          </div>
+          <span class="rank">2nd Runners-Up</span>
+          <p>Organized by the Bangladesh Mathematical Olympiad Committee with Prothom-Alo and Dutch-Bangla Bank, the national round serves as the qualifying stage for the Bangladesh team to compete in the International Mathematics Olympiad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ BEYOND (Creative Works structure) ============ -->
 <section class="page" id="beyond">
   <section class="section">
     <div class="wrap">
-      <div class="kicker reveal">Beyond / 05</div>
-      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 18px">Beyond the research</h1>
-      <p class="lead narrow reveal" style="--d:.1s">The same instinct that pulls me toward strategic systems doesn't switch off after hours. Maps are spatial systems; game ROM hacks are rule systems; stories are systems of cause and consequence. Here's what I make for fun.</p>
-      <div class="cards2" style="margin-top:34px">
-        <div class="bcard reveal" style="--d:.05s">
-          <div class="thumb">▶</div>
-          <h3>YouTube videos</h3>
-          <p>I make and edit videos — turning ideas into something watchable.</p>
-          <a class="tlink" data-nav="beyond" data-ext="YouTube channel (external)" style="margin-top:14px">Watch <span class="ar">→</span></a>
-        </div>
-        <div class="bcard reveal" style="--d:.1s">
-          <div class="thumb">✎</div>
-          <h3>Writing &amp; stories</h3>
-          <p>I write fiction; a narrative is just a system of cause and consequence.</p>
-          <a class="tlink" data-nav="beyond" data-ext="Writing / stories (external)" style="margin-top:14px">Read <span class="ar">→</span></a>
-        </div>
-        <div class="bcard reveal" style="--d:.15s">
-          <div class="thumb">◆</div>
-          <h3>Game ROM hacks</h3>
-          <p>I modify classic games — really, designing rule systems and constraints.</p>
-          <a class="tlink" data-nav="beyond" data-ext="ROM hack project (external)" style="margin-top:14px">See the project <span class="ar">→</span></a>
-        </div>
-        <div class="bcard reveal" style="--d:.2s">
-          <div class="thumb">⬡</div>
-          <h3>Cartography</h3>
-          <p>I design maps for fun; a map is a spatial system rendered legible.</p>
-          <a class="tlink" data-nav="beyond" data-ext="Cartography / maps (external)" style="margin-top:14px">View maps <span class="ar">→</span></a>
+      <div class="kicker reveal">Beyond / 06</div>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2rem,4.6vw,3rem);margin:14px 0 18px">Beyond the research</h1>
+      <p class="lead narrow reveal" style="--d:.1s">It's widely suggested that a person keep five kinds of hobbies — one that earns, one that creates, one that keeps you fit, one that builds knowledge, and one that connects you to others. Mine happen to cover all five. Here's a selection of favorite creative works over the years. The same instinct that pulls me toward strategic systems doesn't switch off after hours: maps are spatial systems, ROM hacks are rule systems, and stories are systems of cause and consequence.</p>
+
+      <!-- PYTHON REPOSITORIES -->
+      <div class="cw-block reveal" style="--d:.05s">
+        <div class="cat">01 — Code</div>
+        <h2 class="cwh">Python repositories</h2>
+        <p class="intro">My <a href="https://github.com/shuvo2109" target="_blank" rel="noopener">GitHub profile</a> links to all of my programs. I've worked in C, R, and Assembly, but Python is my preferred and most versatile language — for everything from fun projects to mathematical simulations.</p>
+        <div class="cw-grid">
+          <div class="work">
+            <div class="thumb">🍜</div>
+            <h4>One Moon Restaurant</h4>
+            <p>A Python project built around a fictitious restaurant — scripts for recipe verification, receipt generation, and other management tasks. I update it as my Python skills grow.</p>
+            <div class="links"><a class="tlink" href="https://github.com/shuvo2109/one-moon-restaurant" target="_blank" rel="noopener">Repository ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">🤔</div>
+            <h4>Number Guessing Game</h4>
+            <p>A simple Python game in which the computer picks a number and you try to guess it.</p>
+            <div class="links"><a class="tlink" href="https://github.com/shuvo2109/number-guessing-game" target="_blank" rel="noopener">Repository ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">🀄</div>
+            <h4>Tomodachi Factor</h4>
+            <p>A text-based card game inspired by TED-Ed's Tarot Card Puzzle, built to run in Python's IDLE environment.</p>
+            <div class="links"><a class="tlink" href="https://github.com/shuvo2109/tomodachi-factor" target="_blank" rel="noopener">Repository ↗</a></div>
+          </div>
         </div>
       </div>
+
+      <!-- RECREATIONAL MATHEMATICS -->
+      <div class="cw-block reveal" style="--d:.05s">
+        <div class="cat">02 — Knowledge</div>
+        <h2 class="cwh">Recreational mathematics</h2>
+        <p class="intro">In my spare time I work through the problems in <i>Neurone Onuronon</i> (The Resonance of Neurons) by Muhammad Zafar Iqbal and Mohammad Kaykobad. The goal is to eventually solve all 400 problems across the book and its sequel; a more formal write-up will follow once I'm there. Draft solutions so far:</p>
+        <div class="cw-grid">
+          <div class="work">
+            <div class="thumb">📄</div>
+            <h4>Problems #001 – 050</h4>
+            <p>Partially complete. Draft solution set (PDF).</p>
+            <!-- LINK NEEDED: archived site embedded a Google Drive PDF without a public URL — add your share link -->
+            <div class="links"><a class="tlink" data-nav="beyond" data-ext="Solutions 001–050 (PDF) — add your Google Drive link">PDF ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">📄</div>
+            <h4>Problems #051 – 100</h4>
+            <p>Progressing. Draft solution set (PDF).</p>
+            <!-- LINK NEEDED: add your Google Drive share link -->
+            <div class="links"><a class="tlink" data-nav="beyond" data-ext="Solutions 051–100 (PDF) — add your Google Drive link">PDF ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARTOGRAPHY -->
+      <div class="cw-block reveal" style="--d:.05s">
+        <div class="cat">03 — Creativity</div>
+        <h2 class="cwh">Cartography</h2>
+        <p class="intro">I'm an avid amateur cartographer drawn to sporadic map projects — especially Dhaka's intricate map, where I like to uncover hidden patterns and odd details.</p>
+        <div class="cw-grid">
+          <div class="work">
+            <div class="thumb">🐘</div>
+            <h4>The Curious Case of Elephant Taming in Dhaka</h4>
+            <p>How Elephant Road and Hatirpool got their names — a story of colonial-era elephant-rearing grounds at Pilkhana, Kalabagan, and Hatirjheel, and how "Hati" accidentally spilled into Dhaka's place-names.</p>
+            <div class="links"><a class="tlink" href="https://www.facebook.com/fahimur.rahman.5070/posts/pfbid0qL7Em4nLYcdJoSde5uN3XUXr8MGGPBh5bCgzzUTYv8jdP8PPc8fKUD2cA2aRQGb7l" target="_blank" rel="noopener">Facebook post ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">🗾</div>
+            <h4>Reimagining Bangladesh in Pokémon Style</h4>
+            <p>Inspired by FireRed's Kanto map (based on Japan's topography), I hand-drew a Bangladesh map pixel-by-pixel in MS Paint, with towns loosely based on the 1970s "Brihottor" districts.</p>
+            <div class="links"><a class="tlink" href="https://www.facebook.com/photo.php?fbid=848909808928193&set=pb.100014275457169.-2207520000&type=3" target="_blank" rel="noopener">View map ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">📍</div>
+            <h4>k-Cluster Algorithm to Redefine Divisions</h4>
+            <p>Using k-means clustering on districts' latitudes and longitudes, I reassigned each district to one of eight new divisions by nearest headquarters — distances computed via Google Maps and Selenium.</p>
+            <div class="links"><a class="tlink" href="https://www.facebook.com/photo.php?fbid=1558390841313416&set=pb.100014275457169.-2207520000&type=3" target="_blank" rel="noopener">View map ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">🎨</div>
+            <h4>The Four Color Theorem on the Map of Bangladesh</h4>
+            <p>The four-color theorem says any map needs at most four colors so no two adjacent regions match. Coloring Bangladesh clockwise from Panchagarh, I tried to use just three — but four proved inevitable. Made in MS Paint and IrfanView.</p>
+            <div class="links"><a class="tlink" href="https://www.facebook.com/photo.php?fbid=1253901538429016&set=pb.100014275457169.-2207520000&type=3" target="_blank" rel="noopener">View map ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WRITING / BLOGGING -->
+      <div class="cw-block reveal" style="--d:.05s">
+        <div class="cat">04 — Social</div>
+        <h2 class="cwh">Writing &amp; blogging</h2>
+        <p class="intro">I write fiction and the occasional blog post — a narrative is just a system of cause and consequence.</p>
+        <div class="cw-grid">
+          <div class="work">
+            <div class="thumb">✎</div>
+            <h4>Writing &amp; stories</h4>
+            <p>A collection of my stories and blog posts.</p>
+            <!-- LINK NEEDED: the archived page embedded a blog widget without an exposed URL — add your writing/blog link -->
+            <div class="links"><a class="tlink" data-nav="beyond" data-ext="Writing / blog — add your link">Read ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YOUTUBE / VIDEO EDITING -->
+      <div class="cw-block reveal" style="--d:.05s">
+        <div class="cat">05 — Creativity</div>
+        <h2 class="cwh">YouTube &amp; video editing</h2>
+        <p class="intro">I curate and edit content from franchises like Genshin Impact and Pokémon, plus various anime, video games, and the superhero genre — turning ideas into something watchable.</p>
+        <div class="cw-grid">
+          <div class="work">
+            <div class="thumb">▶</div>
+            <h4>Featured edit — 1</h4>
+            <p>A multimedia edit from my channel.</p>
+            <div class="links"><a class="tlink" href="https://www.youtube.com/watch?v=wChjpXDj-Gg" target="_blank" rel="noopener">Watch ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">▶</div>
+            <h4>Featured edit — 2</h4>
+            <p>A multimedia edit from my channel.</p>
+            <div class="links"><a class="tlink" href="https://www.youtube.com/watch?v=bcOYIAEESJk" target="_blank" rel="noopener">Watch ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">▶</div>
+            <h4>Featured edit — 3</h4>
+            <p>A multimedia edit from my channel.</p>
+            <div class="links"><a class="tlink" href="https://www.youtube.com/watch?v=u_Pi_FyFh08" target="_blank" rel="noopener">Watch ↗</a></div>
+          </div>
+        </div>
+        <!-- LINK NEEDED: add your main YouTube channel URL here if you'd like a "Visit channel" button -->
+        <p class="cw-note">Want a channel button? Add your YouTube channel URL where noted in the HTML comment.</p>
+      </div>
+
+      <!-- ROM HACKING -->
+      <div class="cw-block reveal" style="--d:.05s">
+        <div class="cat">06 — Creativity</div>
+        <h2 class="cwh">ROM hacking</h2>
+        <p class="intro">ROM hacking means modifying a game's ROM image to change its graphics, dialogue, levels, and gameplay — a creative outlet and a way to build new, unofficial games on an old engine. I work mainly on two Pokémon ROM hacks, focusing on hex editing and assembly hacking in Assembly and C.</p>
+        <div class="cw-grid">
+          <div class="work">
+            <div class="thumb">🌿</div>
+            <h4>Pokémon Lush Green</h4>
+            <p>Set in a fictional region named Rupai, loosely based on Bangladesh. A protagonist explores the region, meets friends and foes, and overcomes challenges. No released versions yet.</p>
+            <div class="links"><a class="tlink" href="https://www.youtube.com/watch?v=ZNmaYBdbviI" target="_blank" rel="noopener">Trailer ↗</a></div>
+          </div>
+          <div class="work">
+            <div class="thumb">🏝️</div>
+            <h4>Pokémon Stranded</h4>
+            <p>An anecdote about a youngster lost on remote islands, navigating by wit and ideas. It features layered storytelling and ARG elements, and has become a cult classic with a small, loyal fandom.</p>
+            <div class="links">
+              <a class="tlink" href="https://sites.google.com/view/pokemon-stranded/home" target="_blank" rel="noopener">Website ↗</a>
+              <a class="tlink" href="https://github.com/shuvo2109/stranded-cfru" target="_blank" rel="noopener">Source ↗</a>
+              <a class="tlink" href="https://www.youtube.com/watch?v=kPYDZ_bLots" target="_blank" rel="noopener">Gameplay ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </section>
@@ -610,21 +863,23 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
 <section class="page" id="contact">
   <section class="section">
     <div class="wrap">
-      <div class="kicker reveal">Contact / 06</div>
-      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 26px">Get in touch</h1>
+      <div class="kicker reveal">Contact / 07</div>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2rem,4.6vw,3rem);margin:14px 0 26px">Get in touch</h1>
       <div class="contact-card reveal" style="--d:.12s">
         <div>
           <p class="lead" style="margin-bottom:18px">I'm open to PhD opportunities and research collaborations at the intersection of game theory, multi-agent systems, and applied modeling for health, AI safety, and security. If that's your world too, I'd love to hear from you.</p>
           <div class="em">rahman.fahimur21@gmail.com</div>
+          <div class="em" style="margin-top:4px">md.shuvo@ufl.edu</div>
           <div class="muted" style="font-size:.95rem;margin-top:6px">Gainesville, Florida, USA</div>
         </div>
         <div>
-          <a class="btn primary" data-nav="contact" data-ext="Email — mailto:rahman.fahimur21@gmail.com" style="margin-bottom:22px">Email me <span class="ar">→</span></a>
+          <a class="btn primary" href="mailto:rahman.fahimur21@gmail.com" style="margin-bottom:22px">Email me <span class="ar">→</span></a>
           <div class="social">
-            <a data-nav="contact" data-ext="LinkedIn — linkedin.com/in/fahimurshuvo" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-            <a data-nav="contact" data-ext="GitHub — github.com/shuvo2109" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
-            <a data-nav="contact" data-ext="Google Scholar — scholar.google.com/citations?user=t214uIMAAAAJ" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9zM5 13.18v3.5L12 20.5l7-3.82v-3.5L12 17z"/></svg></a>
-            <a data-nav="contact" data-ext="Email — mailto:rahman.fahimur21@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zm2 2v.4l7 4.6 7-4.6V7zm14 2.7-7 4.6-7-4.6V17h14z"/></svg></a>
+            <a href="https://www.linkedin.com/in/fahimurshuvo/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+            <a href="https://www.github.com/shuvo2109" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
+            <a href="https://scholar.google.com/citations?hl=en&user=t214uIMAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9zM5 13.18v3.5L12 20.5l7-3.82v-3.5L12 17z"/></svg></a>
+            <a href="https://www.researchgate.net/profile/Md-Fahimur-Rahman-Shuvo" target="_blank" rel="noopener" aria-label="ResearchGate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 0H4.41A4.41 4.41 0 0 0 0 4.41v15.18A4.41 4.41 0 0 0 4.41 24h15.18A4.41 4.41 0 0 0 24 19.59V4.41A4.41 4.41 0 0 0 19.59 0zM8.5 14.3c-.43.46-1.06.7-1.83.7-.8 0-1.45-.26-1.92-.78-.47-.52-.7-1.23-.7-2.12v-.7c0-.9.23-1.62.7-2.15.46-.53 1.1-.8 1.9-.8.78 0 1.4.22 1.83.66.43.44.67 1.06.72 1.85H8.06c-.03-.4-.13-.7-.3-.88-.18-.2-.46-.3-.85-.3-.4 0-.7.15-.9.45-.2.3-.3.76-.3 1.38v.72c0 .63.1 1.1.32 1.4.2.3.53.45.97.45.36 0 .63-.08.8-.25l.06-.05v-1.1H6.8v-.97h1.93v2.5l-.23.27zm6.78.6h-1.36l-1.5-2.47h-.9V15.5h-1.15V9.1h2.2c.72 0 1.28.16 1.67.5.4.32.6.78.6 1.38 0 .43-.1.78-.28 1.06-.18.28-.46.5-.83.66l1.55 2.6.03.1zm3.43-2.86h-2.2v1.9h2.6v.96h-3.75V9.1h3.74v.97h-2.6v1.68h2.2v.92z"/></svg></a>
+            <a href="mailto:rahman.fahimur21@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zm2 2v.4l7 4.6 7-4.6V7zm14 2.7-7 4.6-7-4.6V17h14z"/></svg></a>
           </div>
         </div>
       </div>
@@ -632,16 +887,16 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
   </section>
 </section>
 
-<!-- ============ EXTERNAL DUMMY ============ -->
+<!-- ============ EXTERNAL DUMMY (for links still without a URL) ============ -->
 <section class="page" id="external">
   <div class="dummy">
     <div class="wrap">
       <div class="box">
         <span class="badge">External link · placeholder</span>
-        <h2>This is a dummy page</h2>
-        <p class="muted">You clicked a link that, on the real site, would open an external destination (in a new tab). In this prototype those live URLs are stubbed out so nothing leaves the demo. The link you followed points to:</p>
+        <h2>Link not set yet</h2>
+        <p class="muted">This link doesn't have a destination URL yet. On the archived site it pointed to embedded content (a Drive file or blog widget) whose public link wasn't exposed. The intended destination is:</p>
         <div class="dest" id="ext-dest">an external resource</div>
-        <p class="muted" style="font-size:.92rem">When you build the real site, swap this placeholder behavior for the actual URL with <code style="font-family:var(--mono)">target="_blank" rel="noopener"</code>.</p>
+        <p class="muted" style="font-size:.92rem">To wire it up, find the matching <code style="font-family:var(--small)">data-ext</code> link in the HTML and replace it with a normal <code style="font-family:var(--small)">&lt;a href="https://…" target="_blank" rel="noopener"&gt;</code>.</p>
         <div class="actions">
           <button class="btn primary" onclick="history.back()">← Back</button>
           <a class="btn" data-nav="home">Go to homepage</a>
@@ -659,9 +914,10 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
       <div class="name">Md Fahimur Rahman Shuvo</div>
       <div class="det">Gainesville, FL · rahman.fahimur21@gmail.com</div>
       <div class="social" style="margin-top:16px">
-        <a data-nav="contact" data-ext="LinkedIn — linkedin.com/in/fahimurshuvo" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-        <a data-nav="contact" data-ext="GitHub — github.com/shuvo2109" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
-        <a data-nav="contact" data-ext="Google Scholar — scholar.google.com/citations?user=t214uIMAAAAJ" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9zM5 13.18v3.5L12 20.5l7-3.82v-3.5L12 17z"/></svg></a>
+        <a href="https://www.linkedin.com/in/fahimurshuvo/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="https://www.github.com/shuvo2109" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
+        <a href="https://scholar.google.com/citations?hl=en&user=t214uIMAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9zM5 13.18v3.5L12 20.5l7-3.82v-3.5L12 17z"/></svg></a>
+        <a href="https://www.researchgate.net/profile/Md-Fahimur-Rahman-Shuvo" target="_blank" rel="noopener" aria-label="ResearchGate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 0H4.41A4.41 4.41 0 0 0 0 4.41v15.18A4.41 4.41 0 0 0 4.41 24h15.18A4.41 4.41 0 0 0 24 19.59V4.41A4.41 4.41 0 0 0 19.59 0zM8.5 14.3c-.43.46-1.06.7-1.83.7-.8 0-1.45-.26-1.92-.78-.47-.52-.7-1.23-.7-2.12v-.7c0-.9.23-1.62.7-2.15.46-.53 1.1-.8 1.9-.8.78 0 1.4.22 1.83.66.43.44.67 1.06.72 1.85H8.06c-.03-.4-.13-.7-.3-.88-.18-.2-.46-.3-.85-.3-.4 0-.7.15-.9.45-.2.3-.3.76-.3 1.38v.72c0 .63.1 1.1.32 1.4.2.3.53.45.97.45.36 0 .63-.08.8-.25l.06-.05v-1.1H6.8v-.97h1.93v2.5l-.23.27zm6.78.6h-1.36l-1.5-2.47h-.9V15.5h-1.15V9.1h2.2c.72 0 1.28.16 1.67.5.4.32.6.78.6 1.38 0 .43-.1.78-.28 1.06-.18.28-.46.5-.83.66l1.55 2.6.03.1zm3.43-2.86h-2.2v1.9h2.6v.96h-3.75V9.1h3.74v.97h-2.6v1.68h2.2v.92z"/></svg></a>
       </div>
     </div>
     <div class="foot-links">
@@ -669,17 +925,18 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
       <a data-nav="research">Research</a>
       <a data-nav="publications">Publications</a>
       <a data-nav="cv">CV</a>
+      <a data-nav="achievements">Achievements</a>
       <a data-nav="beyond">Beyond</a>
       <a data-nav="contact">Contact</a>
     </div>
   </div>
-  <div class="wrap proto">Interactive prototype · all external links route to a placeholder page</div>
+  <div class="wrap proto">© <span id="yr"></span> Md Fahimur Rahman Shuvo · Gainesville, Florida</div>
 </footer>
 
 <script>
 (function(){
-  var ROUTES=['home','about','research','publications','cv','beyond','contact','external'];
-  var NAV={home:'home',research:'research',publications:'publications',cv:'cv',beyond:'beyond',contact:'contact'};
+  var ROUTES=['home','about','research','publications','cv','achievements','beyond','contact','external'];
+  var NAV={home:'home',research:'research',publications:'publications',cv:'cv',achievements:'achievements',beyond:'beyond',contact:'contact'};
   var pendingAnchor=null, pendingExt=null;
 
   var pages={}; ROUTES.forEach(function(r){ pages[r]=document.getElementById(r); });
@@ -739,6 +996,9 @@ footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid v
     var open=links.classList.toggle('open');
     menuBtn.setAttribute('aria-expanded',open?'true':'false');
   });
+
+  // footer year
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
   window.addEventListener('hashchange',render);
   render();
