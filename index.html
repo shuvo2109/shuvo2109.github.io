@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fahimur Rahman — Portfolio (Prototype)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F0E6; --paper-2:#EDE7D8; --surface:#FFFEFB;
+  --ink:#1B1A15; --ink-soft:#3b392f; --muted:#6c6857; --faint:#9a9583;
+  --line:#E2DACA; --line-2:#D4CBB4;
+  --accent:#0E6E59; --accent-2:#0a5346;
+  --health:#0E6E59; --ai:#3B3A8C; --security:#B0532E;
+  --radius:16px; --radius-sm:10px; --maxw:1100px;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink-soft);
+  font-family:var(--sans);font-size:17px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1.08;letter-spacing:-0.015em;margin:0}
+a{color:var(--accent);text-decoration:none}
+p{margin:0 0 1.05rem}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.lead{font-size:1.18rem;color:var(--ink-soft)}
+.muted{color:var(--muted)}
+
+/* header */
+header.site{position:sticky;top:0;z-index:50;background:rgba(244,240,230,.82);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer}
+.mono-mark{width:34px;height:34px;border:1.5px solid var(--ink);border-radius:8px;display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink)}
+.brand b{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--ink);letter-spacing:-.01em}
+.links{display:flex;align-items:center;gap:26px}
+.links a{font-size:.93rem;color:var(--ink-soft);letter-spacing:.01em;position:relative;padding:4px 0}
+.links a:hover{color:var(--ink)}
+.links a[aria-current="page"]{color:var(--accent)}
+.links a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent)}
+.menu-btn{display:none;border:1px solid var(--line-2);background:var(--surface);border-radius:9px;width:42px;height:38px;cursor:pointer;align-items:center;justify-content:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{content:"";display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.menu-btn span::before{position:absolute;top:-6px}.menu-btn span::after{position:absolute;top:6px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55em;font-family:var(--mono);font-size:.76rem;letter-spacing:.07em;text-transform:uppercase;padding:.92em 1.5em;border-radius:999px;border:1.5px solid var(--ink);cursor:pointer;transition:.24s ease;background:transparent;color:var(--ink)}
+.btn .ar{transition:transform .24s ease}
+.btn:hover .ar{transform:translateX(4px)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fdfdf8}
+.btn.primary:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.btn.sm{font-size:.7rem;padding:.7em 1.15em}
+.btn:focus-visible{outline:3px solid rgba(14,110,89,.4);outline-offset:2px}
+.tlink{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--accent);text-transform:uppercase;cursor:pointer}
+.tlink .ar{transition:transform .2s}.tlink:hover .ar{transform:translateX(4px)}
+.tlink:hover{color:var(--accent-2)}
+
+/* page system + reveal */
+main{min-height:60vh}
+.page{display:none}
+.page.is-active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.page.is-active .reveal{opacity:0;animation:rise .72s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+@media (prefers-reduced-motion:reduce){.page.is-active .reveal{animation:none;opacity:1}html{scroll-behavior:auto}}
+
+/* hero */
+.hero{padding:78px 0 64px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.55fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,6vw,4.5rem);font-weight:500;margin:18px 0 22px;color:var(--ink)}
+.hero h1 .em{font-style:italic;color:var(--accent)}
+.hero .sub{font-size:1.22rem;color:var(--ink-soft);max-width:33ch;margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.portrait{justify-self:center;text-align:center}
+.portrait .circle{width:236px;height:236px;border-radius:50%;background:var(--paper-2);border:1px solid var(--line-2);display:grid;place-items:center;position:relative;box-shadow:0 18px 50px rgba(27,26,21,.07)}
+.portrait .circle::after{content:"";position:absolute;inset:11px;border-radius:50%;border:1px dashed var(--line-2)}
+.portrait .circle b{font-family:var(--serif);font-size:5.5rem;color:var(--faint);font-weight:400}
+.portrait small{display:block;margin-top:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+
+/* generic section */
+.section{padding:64px 0;border-bottom:1px solid var(--line)}
+.section.band{background:var(--paper-2)}
+.sec-head{margin-bottom:34px}
+.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-top:8px}
+.narrow{max-width:62ch}
+
+/* through-line chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{font-family:var(--mono);font-size:.74rem;letter-spacing:.03em;color:var(--ink-soft);background:var(--surface);border:1px solid var(--line-2);padding:7px 13px;border-radius:999px}
+
+/* domain cards */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:0 26px 26px;overflow:hidden;transition:.24s ease;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 16px 40px rgba(27,26,21,.07)}
+.card .bar{height:4px;margin:0 -26px 22px}
+.card .idx{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--muted)}
+.card h3{font-size:1.4rem;margin:8px 0 12px}
+.card p{font-size:1rem;color:var(--ink-soft);flex:1}
+.bar-h{background:var(--health)} .bar-a{background:var(--ai)} .bar-s{background:var(--security)}
+.t-h{color:var(--health)} .t-a{color:var(--ai)} .t-s{color:var(--security)}
+
+/* publication rows */
+.pub{display:flex;gap:20px;padding:22px 0;border-top:1px solid var(--line);align-items:flex-start}
+.pub:last-of-type{border-bottom:1px solid var(--line)}
+.pub .venue{flex:0 0 168px;font-family:var(--mono);font-size:.74rem;letter-spacing:.02em;color:var(--muted);padding-top:4px}
+.pub .body h3{font-size:1.18rem;font-weight:500;line-height:1.3;margin-bottom:6px}
+.pub .body h3 .x{font-size:.85rem;color:var(--faint)}
+.pub-actions{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.cite{font-family:var(--sans);font-size:.95rem;color:var(--ink-soft)}
+.cite b{color:var(--ink);font-weight:600}
+details.pls{margin-top:12px;border-left:2px solid var(--line-2);padding:2px 0 2px 16px}
+details.pls summary{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);cursor:pointer;list-style:none}
+details.pls summary::-webkit-details-marker{display:none}
+details.pls summary::before{content:"+ ";font-weight:600}
+details.pls[open] summary::before{content:"– "}
+details.pls p{margin:.6rem 0 .2rem;font-size:.97rem;color:var(--ink-soft)}
+
+/* research themes */
+.theme{padding:40px 0;border-top:1px solid var(--line)}
+.theme:first-of-type{border-top:none;padding-top:8px}
+.theme .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.theme h3{font-size:1.7rem;margin:10px 0 14px;max-width:24ch}
+.theme .hook{font-family:var(--serif);font-style:italic;font-size:1.28rem;color:var(--ink);margin-bottom:18px;max-width:40ch}
+.theme .out{margin-top:18px}
+.theme .out .ol{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.outitem{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-top:1px dashed var(--line-2)}
+.outitem .yr{font-family:var(--mono);font-size:.78rem;color:var(--muted);flex:0 0 88px}
+.next{margin-top:16px;font-size:1rem;color:var(--muted)}
+.next b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
+
+/* timeline / cv */
+.tl{position:relative;margin-left:6px}
+.tl-item{position:relative;padding:0 0 30px 30px;border-left:2px solid var(--line-2)}
+.tl-item:last-child{border-left-color:transparent}
+.tl-item::before{content:"";position:absolute;left:-7px;top:3px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--paper)}
+.tl-item .when{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+.tl-item h3{font-size:1.22rem;font-weight:500;margin:4px 0 2px}
+.tl-item .org{color:var(--ink-soft);font-size:1rem}
+.tl-item .meta{font-size:.95rem;color:var(--muted);margin-top:4px}
+.tl-item .thesis{font-size:.95rem;color:var(--ink-soft);margin-top:6px;font-style:italic}
+.skillgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.skillgroup h4{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;font-weight:500}
+.skillgroup p{font-size:1rem;color:var(--ink-soft);margin:0}
+.subhead{font-family:var(--serif);font-size:1.45rem;color:var(--ink);margin:42px 0 20px}
+
+/* beyond */
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.bcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.24s ease}
+.bcard:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 16px 40px rgba(27,26,21,.07)}
+.bcard .thumb{height:120px;border-radius:var(--radius-sm);background:var(--paper-2);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--serif);font-size:2rem;color:var(--faint);margin-bottom:18px}
+.bcard h3{font-size:1.3rem;margin-bottom:8px}
+.bcard p{font-size:1rem;color:var(--ink-soft)}
+
+/* contact */
+.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:40px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.contact-card .em{font-family:var(--mono);font-size:1.05rem;color:var(--ink);word-break:break-all}
+.social{display:flex;gap:14px;flex-wrap:wrap}
+.social a{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;color:var(--ink);transition:.22s}
+.social a:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.social svg{width:20px;height:20px;fill:currentColor}
+
+/* external dummy */
+.dummy{padding:90px 0;display:grid;place-items:center;text-align:center}
+.dummy .box{max-width:560px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);padding:48px 40px;box-shadow:0 20px 60px rgba(27,26,21,.08)}
+.dummy .badge{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--security);border:1px solid var(--security);border-radius:999px;padding:6px 14px;margin-bottom:22px}
+.dummy h2{font-size:2rem;margin-bottom:16px}
+.dummy .dest{font-family:var(--mono);font-size:.95rem;color:var(--ink);background:var(--paper-2);border:1px solid var(--line-2);border-radius:var(--radius-sm);padding:14px 18px;margin:22px 0;word-break:break-all}
+.dummy .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+
+/* footer */
+footer.site{padding:46px 0 40px;background:var(--paper-2);border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.foot .name{font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:4px}
+.foot .det{font-size:.92rem;color:var(--muted)}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+.foot-links a:hover{color:var(--accent)}
+.foot .social a{width:40px;height:40px}
+.proto{margin-top:26px;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--faint)}
+
+@media (max-width:880px){
+  .links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:14px 28px;gap:6px}
+  .links.open{display:flex}
+  .links a{padding:9px 0;width:100%}
+  .menu-btn{display:flex}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .portrait{order:-1}
+  .cards3{grid-template-columns:1fr}
+  .cards2{grid-template-columns:1fr}
+  .skillgrid{grid-template-columns:1fr}
+  .contact-card{grid-template-columns:1fr;gap:28px;padding:30px}
+  .pub{flex-direction:column;gap:6px}
+  .pub .venue{flex-basis:auto}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <div class="brand" data-nav="home" role="link" tabindex="0" aria-label="Home">
+      <div class="mono-mark">FR</div><b>Fahimur Rahman</b>
+    </div>
+    <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav class="links" id="navlinks">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#research" data-nav="research">Research</a>
+      <a href="#publications" data-nav="publications">Publications</a>
+      <a href="#cv" data-nav="cv">CV</a>
+      <a href="#beyond" data-nav="beyond">Beyond</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section class="page" id="home">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker reveal" style="--d:.02s">Researcher · mathematical modeling of strategic behavior</div>
+        <h1 class="reveal" style="--d:.08s">I model how agents <span class="em">cooperate, compete, and evolve</span> under incentives — to make complex systems safer and fairer.</h1>
+        <p class="sub reveal" style="--d:.16s">Game theory, evolutionary dynamics, and multi-agent systems — applied to public health, AI safety, and security.</p>
+        <div class="hero-cta reveal" style="--d:.24s">
+          <a class="btn primary" href="#research" data-nav="research">Explore my research <span class="ar">→</span></a>
+          <a class="btn" data-nav="cv" data-ext="CV (PDF) — Google Drive download">Download CV</a>
+        </div>
+      </div>
+      <div class="portrait reveal" style="--d:.2s">
+        <div class="circle"><b>F</b></div>
+        <small>your photo</small>
+      </div>
+    </div>
+  </div>
+
+  <section class="section band">
+    <div class="wrap">
+      <div class="kicker reveal">The through-line</div>
+      <h2 class="reveal" style="--d:.06s;margin-top:8px">One question, many costumes</h2>
+      <p class="lead narrow reveal" style="--d:.12s;margin-top:18px">Rock-paper-scissors dynamics. Vaccine hesitancy. Traffic crashes as self-exciting processes. Cooperation and betrayal between AI agents. On paper, an unusual route — civil engineering, then a Master of Philosophy in mathematics, now electrical and computer engineering. Underneath, it's a single question asked in different costumes: how do agents interacting under incentives produce emergent order, or collapse into chaos? I build the mathematical theory that answers it, and I take that theory into the domains where it has never mattered more.</p>
+      <div class="chips reveal" style="--d:.18s">
+        <span class="chip">cyclic dominance</span><span class="chip">vaccination games</span><span class="chip">self-exciting processes</span><span class="chip">multi-agent RL</span><span class="chip">cybersecurity</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">What I work on</div>
+        <h2>Three domains, one underlying theory</h2>
+      </div>
+      <div class="cards3">
+        <div class="card reveal" style="--d:.05s">
+          <div class="bar bar-h"></div>
+          <div class="idx">01 — domain</div>
+          <h3 class="t-h">Health &amp; epidemics</h3>
+          <p>Behavioral vaccination games and epidemic interventions — modeling how people choose, not just how disease spreads.</p>
+          <a class="tlink t-h" data-nav="research" data-anchor="theme-health" style="margin-top:16px">Explore <span class="ar">→</span></a>
+        </div>
+        <div class="card reveal" style="--d:.12s">
+          <div class="bar bar-a"></div>
+          <div class="idx">02 — domain</div>
+          <h3 class="t-a">AI &amp; multi-agent systems</h3>
+          <p>Cooperation, defection, and the evolution of strategy among learning agents — game theory toward safer AI.</p>
+          <a class="tlink t-a" data-nav="research" data-anchor="theme-ai" style="margin-top:16px">Explore <span class="ar">→</span></a>
+        </div>
+        <div class="card reveal" style="--d:.19s">
+          <div class="bar bar-s"></div>
+          <div class="idx">03 — domain</div>
+          <h3 class="t-s">Security &amp; society</h3>
+          <p>Game-theoretic models of cybersecurity and strategic conflict, where incentives decide the outcome.</p>
+          <a class="tlink t-s" data-nav="research" data-anchor="theme-security" style="margin-top:16px">Explore <span class="ar">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <div class="sec-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px">
+        <div><div class="kicker">Selected publications</div><h2 style="margin-top:8px">Recent work</h2></div>
+        <a class="tlink" data-nav="publications">All publications <span class="ar">→</span></a>
+      </div>
+      <div class="reveal" style="--d:.08s">
+        <div class="pub">
+          <div class="venue">Scientific Reports · 2025</div>
+          <div class="body"><h3>Analyzing disease control through a testing-game approach with treatment and vaccination strategies <a class="x" data-nav="publications" data-ext="DOI — doi.org/10.1038/s41598-024-84746-w">↗</a></h3></div>
+        </div>
+        <div class="pub">
+          <div class="venue">R. Soc. Open Science · 2024</div>
+          <div class="body"><h3>Environmental feedback in the optional prisoner's dilemma: cyclic dominance and the evolution of cooperation <a class="x" data-nav="publications" data-ext="DOI — doi.org/10.1098/rsos.240717">↗</a></h3></div>
+        </div>
+        <div class="pub">
+          <div class="venue">Appl. Math. Comput. · 2024</div>
+          <div class="body"><h3>Cyclic dominance of rock-paper-scissors strategies within the optional prisoner's dilemma <a class="x" data-nav="publications" data-ext="DOI — doi.org/10.1016/j.amc.2024.128836">↗</a></h3></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker reveal">What I'm working toward</div>
+      <h2 class="reveal" style="--d:.06s;margin-top:8px;max-width:18ch">Theory as infrastructure</h2>
+      <p class="lead narrow reveal" style="--d:.12s;margin-top:18px">The world has no shortage of data scientists. What's scarce — and increasingly urgent — are people who can build the theoretical scaffolding that tells us what the data should even mean. My aim is to help turn the mathematics of strategic, multi-agent behavior into dependable infrastructure for the decisions that shape public health, the trajectory of AI, and the security of the systems we all rely on.</p>
+      <div class="reveal" style="--d:.18s;margin-top:26px">
+        <a class="btn" data-nav="about">More about me <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="page" id="about">
+  <section class="section">
+    <div class="wrap narrow">
+      <div class="kicker reveal">About</div>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 28px">One question, followed across disciplines.</h1>
+      <p class="reveal" style="--d:.12s">I didn't take the obvious route. I trained as a civil engineer, fell for the mathematics underneath it, completed a Master of Philosophy in mathematics, and am now finishing a Master of Science in electrical and computer engineering. From the outside that looks like three careers. From the inside it's one: I kept following a single question across whatever discipline could answer it next.</p>
+      <p class="reveal" style="--d:.16s">That question is how agents — cells, people, algorithms — interacting under incentives produce emergent order or collapse into chaos. Rock-paper-scissors dynamics, vaccine hesitancy, traffic crashes, cooperation between AI agents: different costumes, same plot. I love mathematics as a language for this, not just as a tool; the four journal papers I published during my MPhil were the fun part, not the grind.</p>
+      <p class="reveal" style="--d:.2s">What I seem to be good at is translating messy, real-world phenomena into precise mathematical structures and then actually solving them — and moving between fields quickly enough to do it where it matters. And it matters more each year. The world has plenty of data scientists; what's scarce are people who can build the theoretical scaffolding that tells us what the data should even mean, in public health, in AI safety, and in security.</p>
+      <p class="reveal" style="--d:.24s">My aim is to keep building that scaffolding — to help turn the mathematics of strategic, multi-agent behavior into dependable infrastructure for high-stakes decisions. Right now that means deepening my work on cooperation in multi-agent learning systems, and finding the people and problems worth pointing it at next.</p>
+      <div class="reveal" style="--d:.3s;margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn primary" data-nav="research">See my research <span class="ar">→</span></a>
+        <a class="btn" data-nav="contact">Get in touch <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ RESEARCH ============ -->
+<section class="page" id="research">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker reveal">Research / 02</div>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 22px">Research</h1>
+      <p class="lead narrow reveal" style="--d:.12s">My work sits at the intersection of evolutionary game theory, eco-evolutionary dynamics, and the mathematical modeling of behavior. The common question is how individual choices, made under incentives and uncertainty, add up to collective order or collapse. Rather than list papers, I've organized the work around the questions that drive it.</p>
+
+      <div style="margin-top:40px">
+        <div class="theme" id="theme-cooperation">
+          <div class="tag t-h">Theme 01 — cooperation &amp; evolutionary dynamics</div>
+          <h3>Cooperation, cyclic dominance &amp; evolutionary dynamics</h3>
+          <p class="hook">When does cooperation survive in a world that rewards defection — and what keeps rock-paper-scissors cycles spinning instead of settling?</p>
+          <p>Cooperation is fragile: in most strategic settings the rational move is to defect, yet cooperation persists across biology and society. My MPhil work asked when and why. Building on the <em>optional</em> prisoner's dilemma — where players may also abstain — I introduced eco-evolutionary feedback, letting the payoff landscape itself shift with the population's behavior. The result is rich cyclic dominance: rock-paper-scissors-like rotations between cooperate, defect, and abstain that can sustain cooperation indefinitely rather than collapsing to a single equilibrium.</p>
+          <div class="out">
+            <div class="ol">Outputs</div>
+            <div class="outitem"><span class="yr">2024</span><span>Royal Society Open Science — environmental feedback &amp; the optional prisoner's dilemma. <a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1098/rsos.240717">DOI ↗</a></span></div>
+            <div class="outitem"><span class="yr">2024</span><span>Applied Mathematics and Computation — cyclic dominance of RPS strategies. <a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1016/j.amc.2024.128836">DOI ↗</a></span></div>
+            <div class="outitem"><span class="yr">2024</span><span>MPhil thesis (BUET) — eco-evolutionary dynamics of cyclic dominance in pairwise dilemma games.</span></div>
+          </div>
+          <p class="next"><b>Heading toward →</b> &nbsp;extending these dynamics to agents that learn rather than agents with fixed strategies.</p>
+        </div>
+
+        <div class="theme" id="theme-health">
+          <div class="tag t-h">Theme 02 — public health</div>
+          <h3>Behavioral epidemiology &amp; public-health decision-making</h3>
+          <p class="hook">Epidemics aren't only biological — they're behavioral. How do testing, treatment, and vaccination choices reshape an outbreak?</p>
+          <p>Whether people test, isolate, accept treatment, or vaccinate depends on perceived risk, cost, and what their neighbors do. Using game-theoretic models grounded in individual-based risk assessment and replicator dynamics, I've studied how combinations of testing, treatment, and vaccination interact — and which combinations actually drive an outbreak toward control. Alongside the modeling, I worked on field-facing projects on COVID-19 contact-reduction behavior and HPV vaccine hesitancy in Bangladesh.</p>
+          <div class="out">
+            <div class="ol">Outputs</div>
+            <div class="outitem"><span class="yr">2025</span><span>Scientific Reports — disease control via a testing game with treatment &amp; vaccination. <a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1038/s41598-024-84746-w">DOI ↗</a></span></div>
+            <div class="outitem"><span class="yr">2024</span><span>Evergreen — combined vaccination, testing &amp; treatment on epidemic dynamics. <a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.5109/7236807">DOI ↗</a></span></div>
+            <div class="outitem"><span class="yr">2023–24</span><span>Research projects on COVID-19 behavior (RISE, BUET) and HPV hesitancy (UGC, Bangladesh).</span></div>
+          </div>
+          <p class="next"><b>Heading toward →</b> &nbsp;decision-support models policymakers can actually use.</p>
+        </div>
+
+        <div class="theme" id="theme-ai">
+          <div class="tag t-a">Theme 03 — AI &amp; security · active frontier</div>
+          <h3>Multi-agent reinforcement learning &amp; security</h3>
+          <p class="hook">What happens to cooperation and defection when the agents are learning algorithms instead of people?</p>
+          <p>This is where I'm heading now. At the University of Florida I've been extending the same questions — when does cooperation emerge, when does it break — to agents that learn. In multi-agent reinforcement learning, strategies aren't fixed; they're discovered through experience, which makes the game-theoretic dynamics both richer and harder to predict. I'm interested in how such systems can be steered toward cooperation and robustness, with cybersecurity as a proving ground where incentives, deception, and defense meet.</p>
+          <div class="out">
+            <div class="ol">Outputs</div>
+            <div class="outitem"><span class="yr">2024–25</span><span>Graduate research, ECE, University of Florida — game theory in cybersecurity &amp; cooperation in multi-agent RL <span class="muted">(manuscript in preparation)</span>.</span></div>
+          </div>
+          <p class="next"><b>Heading toward →</b> &nbsp;game-theoretic foundations for safer multi-agent AI.</p>
+        </div>
+
+        <div class="theme" id="theme-origins">
+          <div class="tag t-s">Theme 04 — origins</div>
+          <h3>Modeling real-world risk</h3>
+          <p class="hook">Before agents, there were events: can urban traffic crashes be modeled as a self-exciting process that predicts its own aftershocks?</p>
+          <p>The systems instinct started here. For my civil-engineering thesis I modeled road-traffic crashes in the Dhaka metropolitan area as a self-exciting (Hawkes) point process — treating each crash not as an independent event but as something that raises the short-term probability of further crashes nearby, the way aftershocks follow an earthquake. It was my first taste of finding hidden structure in messy real-world data, and the path from there to game theory has been a straight line in disguise.</p>
+          <div class="out">
+            <div class="ol">Outputs</div>
+            <div class="outitem"><span class="yr">2022</span><span>BSc thesis / engrXiv preprint — crashes as a self-exciting point process. <a class="tlink" data-nav="publications" data-ext="engrXiv preprint — engrxiv.org/preprint/view/2656">Preprint ↗</a></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top:44px;display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn primary" data-nav="publications">See the full publication list <span class="ar">→</span></a>
+        <a class="btn" data-nav="contact">Let's collaborate <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ PUBLICATIONS ============ -->
+<section class="page" id="publications">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker reveal">Publications / 03</div>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 16px">Publications</h1>
+      <p class="muted narrow reveal" style="--d:.1s">For the most current list, see my Google Scholar profile. Author name in <b style="color:var(--ink)">bold</b> is mine.</p>
+      <div class="reveal" style="--d:.14s;display:flex;gap:14px;margin:22px 0 8px;flex-wrap:wrap">
+        <a class="btn sm" data-nav="publications" data-ext="Google Scholar — scholar.google.com/citations?user=t214uIMAAAAJ">Google Scholar</a>
+        <a class="btn sm" data-nav="publications" data-ext="ORCID — orcid.org (create an iD; see blueprint)">ORCID</a>
+        <a class="btn sm" data-nav="publications" data-ext="ResearchGate — researchgate.net/profile/Md-Fahimur-Rahman-Shuvo">ResearchGate</a>
+      </div>
+
+      <h2 class="subhead reveal" style="--d:.16s">Journal articles</h2>
+      <div class="reveal" style="--d:.18s">
+        <div class="pub">
+          <div class="venue">Scientific Reports<br>15(1), 3994 · 2025</div>
+          <div class="body">
+            <p class="cite">A. Chakraborty, <b>M. F. R. Shuvo</b>, F. F. Haque, and K. M. A. Kabir, "Analyzing disease control through testing game approach embedded with treatment and vaccination strategies," <i>Scientific Reports</i>, vol. 15(1), 3994, 2025.</p>
+            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1038/s41598-024-84746-w">DOI ↗</a></div>
+            <details class="pls"><summary>Plain-language summary</summary><p>People don't decide to test, treat, or vaccinate in isolation — they respond to risk and to what others do. We built a game-theoretic model combining all three choices and showed which combinations actually bring an epidemic under control.</p></details>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="venue">Royal Society Open Science<br>11(10), 240717 · 2024</div>
+          <div class="body">
+            <p class="cite"><b>M. F. R. Shuvo</b> and K. M. A. Kabir, "Investigating the impact of environmental feedback on the optional prisoner's dilemma for insights into cyclic dominance and evolution of cooperation," <i>Royal Society Open Science</i>, vol. 11(10), 240717, 2024.</p>
+            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1098/rsos.240717">DOI ↗</a></div>
+            <details class="pls"><summary>Plain-language summary</summary><p>When the environment pushes back on behavior, cooperation, defection, and abstention can rotate in a never-ending rock-paper-scissors cycle — and that cycling is exactly what keeps cooperation alive.</p></details>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="venue">Applied Mathematics<br>and Computation<br>477, 128836 · 2024</div>
+          <div class="body">
+            <p class="cite"><b>M. F. R. Shuvo</b> and K. M. A. Kabir, "Exploring cyclic dominance in rock-paper-scissor strategies within the optional prisoner's dilemma: A quantitative analysis with environmental feedback," <i>Applied Mathematics and Computation</i>, vol. 477, 128836, 2024.</p>
+            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.1016/j.amc.2024.128836">DOI ↗</a></div>
+            <details class="pls"><summary>Plain-language summary</summary><p>A quantitative deep-dive into when those rock-paper-scissors cycles form, how fast they spin, and what tips a population between cooperation and collapse.</p></details>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="venue">Evergreen<br>11(3), 1498–1507 · 2024</div>
+          <div class="body">
+            <p class="cite"><b>M. F. R. Shuvo</b>, F. F. Haque, and K. M. A. Kabir, "Modeling the impact of combined effect of vaccination, testing, and treatment on epidemic dynamics," <i>Evergreen</i>, vol. 11(3), pp. 1498–1507, 2024.</p>
+            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="DOI — doi.org/10.5109/7236807">DOI ↗</a></div>
+            <details class="pls"><summary>Plain-language summary</summary><p>Vaccination, testing, and treatment each help on their own — but their combined effect isn't simply additive. We mapped how they reinforce (or undercut) one another over the course of an epidemic.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="subhead reveal">Preprints &amp; theses</h2>
+      <div class="reveal">
+        <div class="pub">
+          <div class="venue">engrXiv preprint · 2022</div>
+          <div class="body">
+            <p class="cite"><b>M. F. R. Shuvo</b>, "Modelling crashes as self-exciting point process: A study in Dhaka Metropolitan Area," BSc thesis / engrXiv preprint, 2022.</p>
+            <div class="pub-actions"><a class="tlink" data-nav="publications" data-ext="engrXiv — engrxiv.org/preprint/view/2656">Preprint ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ CV ============ -->
+<section class="page" id="cv">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker reveal">CV &amp; experience / 04</div>
+      <div class="reveal" style="--d:.06s;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin:14px 0 14px">
+        <h1 style="font-size:clamp(2.2rem,5vw,3.3rem)">CV &amp; experience</h1>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn primary" data-nav="cv" data-ext="CV (PDF) — Google Drive download link">Download CV (PDF) <span class="ar">↓</span></a>
+          <a class="btn" data-nav="cv" data-ext="Open in Google Drive — drive.google.com/...">Open in Drive</a>
+        </div>
+      </div>
+      <p class="muted narrow reveal" style="--d:.1s">A full record of my education, research, teaching, and awards. Download the latest CV above.</p>
+
+      <h2 class="subhead reveal">Education</h2>
+      <div class="tl reveal" style="--d:.06s">
+        <div class="tl-item">
+          <div class="when">Jul 2024 – May 2026</div>
+          <h3>M.S., Electrical &amp; Computer Engineering</h3>
+          <div class="org">University of Florida, Gainesville, FL</div>
+          <div class="meta">GPA 3.43 / 4.00 · focus: signals &amp; systems</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">Jun 2022 – Jun 2024</div>
+          <h3>M.Phil., Mathematics</h3>
+          <div class="org">Bangladesh University of Engineering and Technology (BUET)</div>
+          <div class="meta">GPA 4.00 / 4.00</div>
+          <div class="thesis">Thesis: Exploring the eco-evolutionary dynamics of cyclic dominance in rock-paper-scissors strategies within pairwise dilemma games.</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">Feb 2017 – May 2022</div>
+          <h3>B.Sc., Civil Engineering</h3>
+          <div class="org">Bangladesh University of Engineering and Technology (BUET)</div>
+          <div class="meta">GPA 3.30 / 4.00 · major: transportation engineering</div>
+          <div class="thesis">Thesis: Modelling crashes as a self-exciting point process — a study in Dhaka Metropolitan Area.</div>
+        </div>
+      </div>
+
+      <h2 class="subhead reveal">Research appointments</h2>
+      <div class="tl reveal" style="--d:.06s">
+        <div class="tl-item">
+          <div class="when">Aug 2024 – Aug 2025</div>
+          <h3>Graduate Research Assistant</h3>
+          <div class="org">Dept. of Electrical &amp; Computer Engineering, University of Florida</div>
+          <div class="meta">Game theory in cybersecurity and the evolution of cooperation in multi-agent reinforcement learning.</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">Nov 2023 – Nov 2024</div>
+          <h3>Research Assistant</h3>
+          <div class="org">University Grants Commission (UGC), Bangladesh</div>
+          <div class="meta">HPV vaccine hesitancy &amp; behavior project — questionnaire design and a vaccination-game model using individual-based risk assessment and replicator dynamics.</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">May 2023 – Nov 2023</div>
+          <h3>Research Assistant</h3>
+          <div class="org">Research and Innovation Center for Sustainable Engineering (RISE), BUET</div>
+          <div class="meta">COVID-19 contact-reduction behavior — mathematical modeling, multi-agent simulation, statistics, and machine learning.</div>
+        </div>
+      </div>
+
+      <h2 class="subhead reveal">Teaching</h2>
+      <div class="tl reveal" style="--d:.06s">
+        <div class="tl-item">
+          <div class="when">Nov 2022 – Apr 2023</div>
+          <h3>Graduate Teaching Assistant</h3>
+          <div class="org">Dept. of Mathematics, BUET</div>
+          <div class="meta">Assessment and invigilation of assignments and class tests under faculty supervision.</div>
+        </div>
+      </div>
+
+      <h2 class="subhead reveal">Fellowships &amp; honors</h2>
+      <div class="tl reveal" style="--d:.06s">
+        <div class="tl-item">
+          <div class="when">2025</div>
+          <h3>Leonard &amp; Rachel Adams Fellowship</h3>
+          <div class="org">University of Florida — in memory of Ann Adams Reeder</div>
+          <div class="meta">Endowed fund supporting graduate research in electrical engineering.</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">2017</div>
+          <h3>General Scholarship (HSC)</h3>
+          <div class="org">Dhaka Education Board, Bangladesh</div>
+          <div class="meta">Awarded for excellent results in science; 200/200 in Higher Mathematics.</div>
+        </div>
+      </div>
+
+      <h2 class="subhead reveal">Skills</h2>
+      <div class="skillgrid reveal" style="--d:.06s">
+        <div class="skillgroup"><h4>Mathematical &amp; theoretical modeling</h4><p>Mathematical epidemiology, evolutionary game theory, eco-evolutionary dynamics, replicator dynamics, dynamical systems, complex networks, information theory.</p></div>
+        <div class="skillgroup"><h4>Computational methods &amp; simulation</h4><p>Agent-based modeling, multi-agent simulation, multi-agent reinforcement learning, Q-learning, formal methods for AI &amp; robotics.</p></div>
+        <div class="skillgroup"><h4>Data science &amp; statistics</h4><p>Data visualization, statistical modeling, epidemiological data analysis, survey design &amp; analytics, applied machine learning.</p></div>
+        <div class="skillgroup"><h4>Public health &amp; behavioral research</h4><p>Behavioral vaccination modeling, epidemic intervention modeling, public-health decision-making, individual-based risk assessment, health survey methodology.</p></div>
+        <div class="skillgroup"><h4>Programming &amp; tools</h4><p>Python, LaTeX, R, Microsoft Excel &amp; Office suite.</p></div>
+        <div class="skillgroup"><h4>Languages</h4><p>Bengali (native), English (professional working proficiency).</p></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ BEYOND ============ -->
+<section class="page" id="beyond">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker reveal">Beyond / 05</div>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 18px">Beyond the research</h1>
+      <p class="lead narrow reveal" style="--d:.1s">The same instinct that pulls me toward strategic systems doesn't switch off after hours. Maps are spatial systems; game ROM hacks are rule systems; stories are systems of cause and consequence. Here's what I make for fun.</p>
+      <div class="cards2" style="margin-top:34px">
+        <div class="bcard reveal" style="--d:.05s">
+          <div class="thumb">▶</div>
+          <h3>YouTube videos</h3>
+          <p>I make and edit videos — turning ideas into something watchable.</p>
+          <a class="tlink" data-nav="beyond" data-ext="YouTube channel (external)" style="margin-top:14px">Watch <span class="ar">→</span></a>
+        </div>
+        <div class="bcard reveal" style="--d:.1s">
+          <div class="thumb">✎</div>
+          <h3>Writing &amp; stories</h3>
+          <p>I write fiction; a narrative is just a system of cause and consequence.</p>
+          <a class="tlink" data-nav="beyond" data-ext="Writing / stories (external)" style="margin-top:14px">Read <span class="ar">→</span></a>
+        </div>
+        <div class="bcard reveal" style="--d:.15s">
+          <div class="thumb">◆</div>
+          <h3>Game ROM hacks</h3>
+          <p>I modify classic games — really, designing rule systems and constraints.</p>
+          <a class="tlink" data-nav="beyond" data-ext="ROM hack project (external)" style="margin-top:14px">See the project <span class="ar">→</span></a>
+        </div>
+        <div class="bcard reveal" style="--d:.2s">
+          <div class="thumb">⬡</div>
+          <h3>Cartography</h3>
+          <p>I design maps for fun; a map is a spatial system rendered legible.</p>
+          <a class="tlink" data-nav="beyond" data-ext="Cartography / maps (external)" style="margin-top:14px">View maps <span class="ar">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="contact">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker reveal">Contact / 06</div>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(2.2rem,5vw,3.3rem);margin:14px 0 26px">Get in touch</h1>
+      <div class="contact-card reveal" style="--d:.12s">
+        <div>
+          <p class="lead" style="margin-bottom:18px">I'm open to PhD opportunities and research collaborations at the intersection of game theory, multi-agent systems, and applied modeling for health, AI safety, and security. If that's your world too, I'd love to hear from you.</p>
+          <div class="em">rahman.fahimur21@gmail.com</div>
+          <div class="muted" style="font-size:.95rem;margin-top:6px">Gainesville, Florida, USA</div>
+        </div>
+        <div>
+          <a class="btn primary" data-nav="contact" data-ext="Email — mailto:rahman.fahimur21@gmail.com" style="margin-bottom:22px">Email me <span class="ar">→</span></a>
+          <div class="social">
+            <a data-nav="contact" data-ext="LinkedIn — linkedin.com/in/fahimurshuvo" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+            <a data-nav="contact" data-ext="GitHub — github.com/shuvo2109" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
+            <a data-nav="contact" data-ext="Google Scholar — scholar.google.com/citations?user=t214uIMAAAAJ" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9zM5 13.18v3.5L12 20.5l7-3.82v-3.5L12 17z"/></svg></a>
+            <a data-nav="contact" data-ext="Email — mailto:rahman.fahimur21@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zm2 2v.4l7 4.6 7-4.6V7zm14 2.7-7 4.6-7-4.6V17h14z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ EXTERNAL DUMMY ============ -->
+<section class="page" id="external">
+  <div class="dummy">
+    <div class="wrap">
+      <div class="box">
+        <span class="badge">External link · placeholder</span>
+        <h2>This is a dummy page</h2>
+        <p class="muted">You clicked a link that, on the real site, would open an external destination (in a new tab). In this prototype those live URLs are stubbed out so nothing leaves the demo. The link you followed points to:</p>
+        <div class="dest" id="ext-dest">an external resource</div>
+        <p class="muted" style="font-size:.92rem">When you build the real site, swap this placeholder behavior for the actual URL with <code style="font-family:var(--mono)">target="_blank" rel="noopener"</code>.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="history.back()">← Back</button>
+          <a class="btn" data-nav="home">Go to homepage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div>
+      <div class="name">Md Fahimur Rahman Shuvo</div>
+      <div class="det">Gainesville, FL · rahman.fahimur21@gmail.com</div>
+      <div class="social" style="margin-top:16px">
+        <a data-nav="contact" data-ext="LinkedIn — linkedin.com/in/fahimurshuvo" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a data-nav="contact" data-ext="GitHub — github.com/shuvo2109" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
+        <a data-nav="contact" data-ext="Google Scholar — scholar.google.com/citations?user=t214uIMAAAAJ" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9zM5 13.18v3.5L12 20.5l7-3.82v-3.5L12 17z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-links">
+      <a data-nav="home">Home</a>
+      <a data-nav="research">Research</a>
+      <a data-nav="publications">Publications</a>
+      <a data-nav="cv">CV</a>
+      <a data-nav="beyond">Beyond</a>
+      <a data-nav="contact">Contact</a>
+    </div>
+  </div>
+  <div class="wrap proto">Interactive prototype · all external links route to a placeholder page</div>
+</footer>
+
+<script>
+(function(){
+  var ROUTES=['home','about','research','publications','cv','beyond','contact','external'];
+  var NAV={home:'home',research:'research',publications:'publications',cv:'cv',beyond:'beyond',contact:'contact'};
+  var pendingAnchor=null, pendingExt=null;
+
+  var pages={}; ROUTES.forEach(function(r){ pages[r]=document.getElementById(r); });
+  var navAnchors=Array.prototype.slice.call(document.querySelectorAll('.links a'));
+
+  function setActiveNav(route){
+    var key=NAV[route]?route:null;
+    navAnchors.forEach(function(a){
+      if(a.getAttribute('data-nav')===key){a.setAttribute('aria-current','page');}
+      else{a.removeAttribute('aria-current');}
+    });
+  }
+
+  function render(){
+    var route=(location.hash||'#home').replace(/^#\/?/,'');
+    if(ROUTES.indexOf(route)===-1) route='home';
+
+    ROUTES.forEach(function(r){ pages[r].classList.remove('is-active'); });
+    var el=pages[route];
+    void el.offsetWidth;            // restart reveal animations
+    el.classList.add('is-active');
+    setActiveNav(route);
+
+    if(route==='external'){
+      document.getElementById('ext-dest').textContent = pendingExt || 'an external resource';
+    }
+
+    if(pendingAnchor){
+      var target=document.getElementById(pendingAnchor);
+      pendingAnchor=null;
+      if(target){ setTimeout(function(){ target.scrollIntoView({behavior:'smooth',block:'start'}); },60); return; }
+    }
+    window.scrollTo({top:0,left:0,behavior:'auto'});
+  }
+
+  // delegated navigation for anything with data-nav
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-nav]');
+    if(!el) return;
+    e.preventDefault();
+    var route=el.getAttribute('data-nav');
+    if(el.hasAttribute('data-ext')){ pendingExt=el.getAttribute('data-ext'); route='external'; }
+    if(el.hasAttribute('data-anchor')){ pendingAnchor=el.getAttribute('data-anchor'); }
+    closeMenu();
+    if(('#'+route)===location.hash){ render(); }   // same hash → render manually
+    else{ location.hash='#'+route; }               // else hashchange fires render
+  });
+  // keyboard activation for the brand (role=link)
+  document.querySelector('.brand').addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); location.hash='#home'; }
+  });
+
+  // mobile menu
+  var menuBtn=document.querySelector('.menu-btn'), links=document.getElementById('navlinks');
+  function closeMenu(){ links.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }
+  menuBtn.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded',open?'true':'false');
+  });
+
+  window.addEventListener('hashchange',render);
+  render();
+})();
+</script>
+</body>
+</html>
